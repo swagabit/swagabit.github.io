@@ -1,0 +1,119 @@
+import { CONTACTS, SHOWREEL, CASES, SHOWCASE } from "./data.js";
+import { DICT, getLang, applyLang } from "./i18n.js";
+import { createReel } from "./video.js";
+
+let lang = getLang();
+
+// ---------- контакты ----------
+function wireContacts() {
+  document.querySelectorAll("[data-contact]").forEach((a) => {
+    const kind = a.getAttribute("data-contact");
+    if (CONTACTS[kind]) a.href = CONTACTS[kind];
+    if (kind !== "instagram") a.removeAttribute("target");
+  });
+}
+
+// ---------- рендер видео-секций ----------
+function renderReels() {
+  const heroWrap = document.getElementById("hero-reel");
+  heroWrap.querySelectorAll(".reel").forEach((n) => n.remove());
+  heroWrap.appendChild(
+    createReel(SHOWREEL, lang, {
+      meta: `<b>${DICT[lang]["reel.showreel"]}</b><i>0:45</i>`,
+    })
+  );
+
+  const casesList = document.getElementById("cases-list");
+  casesList.innerHTML = "";
+  CASES.forEach((c) => {
+    const card = document.createElement("article");
+    card.className = "case-card reveal in";
+    const info = document.createElement("div");
+    info.className = "case-info";
+    info.innerHTML = `
+      <h3 class="display">${c.brand}</h3>
+      <div class="case-niche">${c.niche[lang]}</div>
+      <div class="case-lead">${c.title[lang]}</div>
+      <p>${c.desc[lang]}</p>
+      <div class="case-metrics">${c.metrics
+        .map((m) => `<div class="metric"><b class="display">${m.b[lang]}</b><span>${m.s[lang]}</span></div>`)
+        .join("")}</div>`;
+    card.appendChild(createReel(c, lang, { meta: `<b>${c.brand}</b>` }));
+    card.appendChild(info);
+    casesList.appendChild(card);
+  });
+
+  const grid = document.getElementById("showcase-grid");
+  grid.innerHTML = "";
+  SHOWCASE.forEach((s) => {
+    const cell = document.createElement("div");
+    cell.className = "showcase-cell reveal in";
+    const metric = s.metric[lang] ? `<i>${s.metric[lang]}</i>` : "";
+    cell.appendChild(createReel(s, lang, { meta: `<b>${s.tag[lang]}</b>${metric}` }));
+    grid.appendChild(cell);
+  });
+}
+
+// ---------- язык ----------
+function setLang(next) {
+  lang = next;
+  applyLang(lang);
+  renderReels();
+  wireContacts();
+}
+document.querySelectorAll("[data-lang-btn]").forEach((btn) => {
+  btn.addEventListener("click", () => setLang(btn.getAttribute("data-lang-btn")));
+});
+
+// ---------- развилка аудитории ----------
+document.querySelectorAll(".aud-tab").forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const target = tab.getAttribute("data-aud");
+    document.querySelectorAll(".aud-tab").forEach((t) => {
+      const on = t === tab;
+      t.classList.toggle("active", on);
+      t.setAttribute("aria-selected", on ? "true" : "false");
+    });
+    document.querySelectorAll("[data-aud-panel]").forEach((p) => {
+      p.classList.toggle("hidden", p.getAttribute("data-aud-panel") !== target);
+    });
+  });
+});
+
+// ---------- появление секций ----------
+const revealIO = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add("in");
+        revealIO.unobserve(e.target);
+      }
+    });
+  },
+  { threshold: 0.12 }
+);
+document.querySelectorAll(".reveal").forEach((el) => revealIO.observe(el));
+
+// ---------- липкая мобильная CTA ----------
+const sticky = document.getElementById("sticky-cta");
+const hero = document.querySelector(".hero");
+const contact = document.getElementById("contact");
+const stickyIO = new IntersectionObserver(
+  () => {
+    const heroGone = hero.getBoundingClientRect().bottom < 0;
+    const contactVisible = contact.getBoundingClientRect().top < window.innerHeight;
+    sticky.classList.toggle("show", heroGone && !contactVisible);
+  },
+  { threshold: [0, 0.1, 1] }
+);
+stickyIO.observe(hero);
+stickyIO.observe(contact);
+
+// ---------- старт ----------
+if (document.documentElement.getAttribute("data-lang-pending") === "en") {
+  setLang("en");
+} else {
+  applyLang(lang);
+  renderReels();
+  wireContacts();
+}

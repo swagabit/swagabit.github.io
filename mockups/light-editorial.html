@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вариант 2 · Светлый редакционный</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbfaf7;
+    --ink: #16150f;
+    --muted: #6d6a60;
+    --line: rgba(22, 21, 15, 0.12);
+    --accent: #1f3fbf;
+    --radius: 4px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Golos Text", system-ui, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .serif { font-family: "Playfair Display", serif; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: rgba(251, 250, 247, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .nav-inner { height: 66px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-family: "Playfair Display", serif; font-weight: 600; font-size: 19px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 30px; align-items: center; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 14.5px; font-weight: 500; transition: color 0.25s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    color: var(--bg) !important; background: var(--ink); font-weight: 600 !important;
+    padding: 10px 22px; border-radius: 100px; transition: background 0.25s, transform 0.2s;
+  }
+  .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero { padding-top: clamp(120px, 16vh, 170px); padding-bottom: clamp(48px, 7vw, 90px); position: relative; }
+  .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: clamp(32px, 5vw, 80px); align-items: end; }
+  .kicker { font-size: 14px; font-weight: 600; color: var(--muted); margin-bottom: 22px; }
+  .kicker b { color: var(--ink); font-weight: 700; }
+  .hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(40px, 5.6vw, 76px);
+    font-weight: 500;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    margin-bottom: 28px;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); line-height: 1.15; }
+  .hero p { font-size: clamp(16px, 1.4vw, 19px); color: var(--muted); max-width: 46ch; margin-bottom: 36px; }
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--ink); color: var(--bg); text-decoration: none;
+    font-weight: 600; font-size: 16px;
+    padding: 17px 34px; border-radius: 100px;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
+  .btn-primary:active { transform: scale(0.98); }
+  .btn-ghost {
+    color: var(--ink); text-decoration: none; font-weight: 600; font-size: 16px;
+    padding: 17px 6px; border-bottom: 1.5px solid var(--ink);
+    transition: color 0.25s, border-color 0.25s;
+  }
+  .btn-ghost:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* Reel placeholder */
+  .reel {
+    position: relative; aspect-ratio: 9 / 16; overflow: hidden;
+    border-radius: var(--radius);
+    background: linear-gradient(165deg, #eceade 0%, #dedbcc 50%, #e6e3d6 100%);
+  }
+  .reel::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 45% at 30% 0%, rgba(31, 63, 191, 0.08), transparent 65%);
+  }
+  .reel-badge {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; align-items: center; gap: 14px; width: 100%;
+  }
+  .reel-play {
+    width: 54px; height: 54px; border-radius: 50%;
+    background: rgba(251, 250, 247, 0.7);
+    border: 1px solid rgba(22, 21, 15, 0.14);
+    display: grid; place-items: center;
+  }
+  .reel-play::after {
+    content: ""; width: 0; height: 0; margin-left: 4px;
+    border-top: 8px solid transparent; border-bottom: 8px solid transparent;
+    border-left: 13px solid rgba(22, 21, 15, 0.6);
+  }
+  .reel-badge span { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .reel-caption { display: flex; justify-content: space-between; margin-top: 12px; font-size: 14px; color: var(--muted); }
+  .reel-caption b { color: var(--ink); font-weight: 600; }
+
+  .hero-reel { max-width: 340px; width: 100%; justify-self: end; }
+  .hero-reel .reel { box-shadow: 0 30px 80px rgba(22, 21, 15, 0.14); }
+
+  /* STATS: инлайн-строка */
+  .stats { border-top: 1px solid var(--line); }
+  .stats-inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: clamp(36px, 5vw, 64px) 0; }
+  .stat b { font-family: "Playfair Display", serif; font-size: clamp(30px, 3.4vw, 52px); font-weight: 500; display: block; line-height: 1.05; margin-bottom: 8px; }
+  .stat b i { font-style: italic; color: var(--accent); }
+  .stat span { color: var(--muted); font-size: 15px; }
+
+  /* CASE: журнальная вёрстка */
+  .section { padding: clamp(72px, 9vw, 130px) 0; }
+  .section-title {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(30px, 3.6vw, 50px);
+    font-weight: 500; line-height: 1.15; letter-spacing: -0.01em;
+    margin-bottom: clamp(36px, 5vw, 72px);
+    max-width: 22ch;
+  }
+  .case { display: grid; grid-template-columns: 300px 1fr; gap: clamp(32px, 5vw, 88px); align-items: center; }
+  .case-info .case-niche { color: var(--accent); font-weight: 600; font-size: 14px; margin-bottom: 14px; }
+  .case-info h3 { font-family: "Playfair Display", serif; font-size: clamp(26px, 2.6vw, 38px); font-weight: 500; margin-bottom: 18px; }
+  .case-info p { color: var(--muted); max-width: 54ch; margin-bottom: 32px; font-size: 16.5px; }
+  .case-metrics { display: grid; grid-template-columns: repeat(3, auto); gap: clamp(20px, 3vw, 48px); justify-content: start; }
+  .metric b { font-family: "Playfair Display", serif; display: block; font-size: clamp(22px, 2vw, 30px); font-weight: 500; margin-bottom: 4px; }
+  .metric span { font-size: 13.5px; color: var(--muted); }
+
+  /* SHOWCASE: асимметричная сетка */
+  .showcase { background: #f3f1ea; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .showcase-grid {
+    display: grid; grid-template-columns: repeat(12, 1fr);
+    gap: clamp(16px, 2.4vw, 32px); align-items: start;
+  }
+  .sc-item-1 { grid-column: 1 / span 3; margin-top: 48px; }
+  .sc-item-2 { grid-column: 4 / span 4; }
+  .sc-item-3 { grid-column: 8 / span 3; margin-top: 72px; }
+  .sc-item-4 { grid-column: 11 / span 2; margin-top: 24px; }
+  .showcase .reel { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+  .showcase .reel:hover { transform: translateY(-8px); }
+
+  /* CONTACT */
+  .contact { text-align: center; }
+  .contact h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(34px, 5vw, 68px);
+    font-weight: 500; line-height: 1.12; letter-spacing: -0.015em;
+    max-width: 18ch; margin: 0 auto 22px;
+  }
+  .contact h2 em { font-style: italic; color: var(--accent); line-height: 1.15; }
+  .contact p { color: var(--muted); font-size: 17px; margin: 0 auto 42px; max-width: 44ch; }
+  .contact .cta-row { justify-content: center; }
+
+  footer { border-top: 1px solid var(--line); }
+  .footer-inner { padding: 26px 0; display: flex; justify-content: space-between; color: var(--muted); font-size: 14px; }
+  .footer-inner a { color: var(--muted); text-decoration: none; }
+  .footer-inner a:hover { color: var(--ink); }
+
+  @media (max-width: 860px) {
+    .nav-links a:not(.nav-cta) { display: none; }
+    .hero-grid { grid-template-columns: 1fr; align-items: start; }
+    .hero-reel { justify-self: start; max-width: 260px; }
+    .stats-inner { grid-template-columns: 1fr; gap: 28px; }
+    .case { grid-template-columns: 1fr; }
+    .case > .reel { max-width: 250px; }
+    .case-metrics { grid-template-columns: 1fr 1fr; }
+    .showcase-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .sc-item-1, .sc-item-2, .sc-item-3, .sc-item-4 { grid-column: auto; margin-top: 0; }
+    .sc-item-2, .sc-item-3 { margin-top: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a class="logo" href="#">Кирилл Таранов</a>
+    <div class="nav-links">
+      <a href="#">Кейсы</a>
+      <a href="#">Услуги</a>
+      <a href="#">Обо мне</a>
+      <a class="nav-cta" href="#">Обсудить проект</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker"><b>Кирилл Таранов</b> · рилс-продюсер · Дубай</div>
+      <h1>Видео, которое приводит <em>клиентов</em></h1>
+      <p>Продюсирую вертикальные ролики для клиник и экспертов: идея, сценарий, съёмка, монтаж и публикация. Полный цикл под ключ.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="#">Обсудить проект</a>
+        <a class="btn-ghost" href="#">Смотреть кейсы</a>
+      </div>
+    </div>
+    <div class="hero-reel">
+      <div class="reel">
+        <div class="reel-badge"><div class="reel-play"></div><span>здесь будет видео</span></div>
+      </div>
+      <div class="reel-caption"><b>Шоурил</b><span>0:45</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="stats">
+  <div class="wrap stats-inner">
+    <div class="stat"><b>4 <i>млн</i></b><span>просмотров на одном ролике</span></div>
+    <div class="stat"><b>15–20</b><span>роликов в месяц на проекте</span></div>
+    <div class="stat"><b>Под ключ</b><span>от идеи до публикации</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title">Кейс: клиника, которая получает пациентов из рилс</h2>
+    <div class="case">
+      <div class="reel">
+        <div class="reel-badge"><div class="reel-play"></div><span>здесь будет видео</span></div>
+      </div>
+      <div class="case-info">
+        <div class="case-niche">Клиника эстетической медицины · Дубай</div>
+        <h3>Beauty Concept</h3>
+        <p>Веду контент клиники с января 2025 года: сценарии, съёмочные дни, монтаж и публикации. Стабильный поток пациентов из рилс, без бюджета на рекламу.</p>
+        <div class="case-metrics">
+          <div class="metric"><b>с 01.2025</b><span>на постоянном ведении</span></div>
+          <div class="metric"><b>15+</b><span>роликов ежемесячно</span></div>
+          <div class="metric"><b>Заявки</b><span>напрямую из рилс</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section showcase">
+  <div class="wrap">
+    <h2 class="section-title">Избранные ролики</h2>
+    <div class="showcase-grid">
+      <div class="sc-item-1"><div class="reel"><div class="reel-badge"><div class="reel-play"></div><span>здесь будет видео</span></div></div><div class="reel-caption"><b>Медицина</b><span>1,2 млн</span></div></div>
+      <div class="sc-item-2"><div class="reel"><div class="reel-badge"><div class="reel-play"></div><span>здесь будет видео</span></div></div><div class="reel-caption"><b>Эксперт</b><span>4 млн</span></div></div>
+      <div class="sc-item-3"><div class="reel"><div class="reel-badge"><div class="reel-play"></div><span>здесь будет видео</span></div></div><div class="reel-caption"><b>Бьюти</b><span>860 тыс</span></div></div>
+      <div class="sc-item-4"><div class="reel"><div class="reel-badge"><div class="reel-play"></div><span>здесь будет видео</span></div></div><div class="reel-caption"><b>Авто</b><span>540 тыс</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact">
+  <div class="wrap">
+    <h2>Расскажите о своём <em>проекте</em></h2>
+    <p>Отвечаю лично, обычно в течение пары часов. Обсудим задачу, и я предложу формат, который подойдёт именно вам.</p>
+    <div class="cta-row">
+      <a class="btn-primary" href="#">Написать в WhatsApp</a>
+      <a class="btn-ghost" href="#">Telegram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>Кирилл Таранов · рилс-продюсер</span>
+    <a href="#">Instagram</a>
+  </div>
+</footer>
+
+</body>
+</html>

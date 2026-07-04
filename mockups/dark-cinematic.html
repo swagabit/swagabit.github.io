@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вариант 1 · Тёмный кинематографичный</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0b0d;
+    --bg-soft: #131316;
+    --line: rgba(255, 255, 255, 0.08);
+    --text: #f4f2ee;
+    --muted: #8f8d88;
+    --accent: #e8442e;
+    --radius: 14px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Manrope", system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .display { font-family: "Unbounded", sans-serif; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    background: rgba(11, 11, 13, 0.72);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    height: 68px; display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { font-family: "Unbounded", sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.02em; color: var(--text); text-decoration: none; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.25s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    background: var(--text); color: #0b0b0d !important; font-weight: 700 !important;
+    padding: 10px 20px; border-radius: 100px; transition: transform 0.2s, background 0.25s;
+  }
+  .nav-cta:hover { background: #fff; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100dvh;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+    padding-top: 68px;
+    position: relative;
+  }
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 75% 40%, rgba(232, 68, 46, 0.07), transparent 70%);
+    pointer-events: none;
+  }
+  .hero-copy h1 {
+    font-family: "Unbounded", sans-serif;
+    font-size: clamp(34px, 4.6vw, 62px);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+  .hero-copy h1 em { font-style: normal; color: var(--accent); }
+  .hero-copy p {
+    font-size: clamp(16px, 1.4vw, 19px);
+    color: var(--muted);
+    max-width: 46ch;
+    margin-bottom: 36px;
+  }
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent); color: #fff; text-decoration: none;
+    font-weight: 700; font-size: 16px;
+    padding: 17px 32px; border-radius: 100px;
+    transition: transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 8px 32px rgba(232, 68, 46, 0.25);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(232, 68, 46, 0.35); }
+  .btn-primary:active { transform: translateY(0) scale(0.98); }
+  .btn-ghost {
+    display: inline-flex; align-items: center;
+    color: var(--text); text-decoration: none; font-weight: 600; font-size: 16px;
+    padding: 17px 28px; border-radius: 100px; border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .btn-ghost:hover { border-color: rgba(255, 255, 255, 0.4); background: rgba(255, 255, 255, 0.04); }
+
+  /* Reel frame (видео-заглушка 9:16) */
+  .reel {
+    position: relative;
+    aspect-ratio: 9 / 16;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background:
+      linear-gradient(160deg, #1c1c21 0%, #101014 55%, #17171b 100%);
+    border: 1px solid var(--line);
+  }
+  .reel::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 45% at 50% 0%, rgba(232, 68, 46, 0.10), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(255, 255, 255, 0.04), transparent 60%);
+  }
+  .reel-badge {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; align-items: center; gap: 14px;
+    width: 100%;
+  }
+  .reel-play {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    display: grid; place-items: center;
+    backdrop-filter: blur(8px);
+  }
+  .reel-play::after {
+    content: ""; display: block;
+    width: 0; height: 0; margin-left: 4px;
+    border-top: 9px solid transparent; border-bottom: 9px solid transparent;
+    border-left: 14px solid rgba(255, 255, 255, 0.75);
+  }
+  .reel-badge span { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .reel-meta {
+    position: absolute; left: 16px; right: 16px; bottom: 14px;
+    display: flex; justify-content: space-between; align-items: center; font-size: 13px;
+  }
+  .reel-meta b { font-weight: 700; color: var(--text); }
+  .reel-meta i { font-style: normal; color: var(--muted); }
+
+  .hero-reel { max-width: 380px; justify-self: end; width: 100%; position: relative; }
+  .hero-reel .reel { box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6); }
+  .hero-reel::after {
+    content: "4 000 000 просмотров";
+    position: absolute; top: 28px; right: -14px;
+    background: var(--text); color: #0b0b0d;
+    font-weight: 800; font-size: 13px;
+    padding: 10px 18px; border-radius: 100px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  }
+
+  /* STATS */
+  .stats { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .stats-inner {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    padding: clamp(32px, 4vw, 56px) 0;
+  }
+  .stat { padding: 0 clamp(16px, 3vw, 40px); }
+  .stat + .stat { border-left: 1px solid var(--line); }
+  .stat b {
+    display: block;
+    font-family: "Unbounded", sans-serif;
+    font-size: clamp(24px, 2.8vw, 40px);
+    font-weight: 600; line-height: 1.1; margin-bottom: 8px;
+  }
+  .stat span { color: var(--muted); font-size: 15px; }
+
+  /* CASE */
+  .section { padding: clamp(72px, 9vw, 130px) 0; }
+  .section-title {
+    font-family: "Unbounded", sans-serif;
+    font-size: clamp(26px, 3vw, 42px);
+    font-weight: 600; line-height: 1.15;
+    margin-bottom: clamp(36px, 5vw, 64px);
+    max-width: 20ch;
+  }
+  .case-card {
+    display: grid; grid-template-columns: 320px 1fr;
+    gap: clamp(28px, 4vw, 64px);
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: clamp(24px, 3vw, 44px);
+    align-items: center;
+  }
+  .case-info h3 { font-family: "Unbounded", sans-serif; font-size: clamp(20px, 2vw, 28px); font-weight: 600; margin-bottom: 6px; }
+  .case-info .case-niche { color: var(--accent); font-weight: 600; font-size: 14px; margin-bottom: 20px; }
+  .case-info p { color: var(--muted); max-width: 52ch; margin-bottom: 28px; }
+  .case-metrics { display: flex; gap: 12px; flex-wrap: wrap; }
+  .metric {
+    border: 1px solid var(--line); border-radius: 12px;
+    padding: 14px 20px;
+  }
+  .metric b { display: block; font-family: "Unbounded", sans-serif; font-size: 20px; font-weight: 600; }
+  .metric span { font-size: 13px; color: var(--muted); }
+
+  /* SHOWCASE */
+  .showcase-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: clamp(14px, 2vw, 24px);
+  }
+  .showcase-row .reel:nth-child(even) { transform: translateY(28px); }
+  .showcase-row .reel { transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s; }
+  .showcase-row .reel:hover { transform: translateY(-6px); border-color: rgba(255, 255, 255, 0.22); }
+  .showcase-row .reel:nth-child(even):hover { transform: translateY(20px); }
+
+  /* CONTACT */
+  .contact { text-align: left; border-top: 1px solid var(--line); }
+  .contact h2 {
+    font-family: "Unbounded", sans-serif;
+    font-size: clamp(30px, 4.4vw, 58px);
+    font-weight: 600; line-height: 1.1; max-width: 16ch;
+    margin-bottom: 20px;
+  }
+  .contact p { color: var(--muted); font-size: 17px; margin-bottom: 40px; max-width: 44ch; }
+  footer { border-top: 1px solid var(--line); }
+  .footer-inner { padding: 28px 0; display: flex; justify-content: space-between; color: var(--muted); font-size: 14px; }
+  .footer-inner a { color: var(--muted); text-decoration: none; }
+  .footer-inner a:hover { color: var(--text); }
+
+  @media (max-width: 860px) {
+    .nav-links a:not(.nav-cta) { display: none; }
+    .hero { grid-template-columns: 1fr; padding-top: 108px; min-height: auto; padding-bottom: 64px; }
+    .hero-reel { justify-self: start; max-width: 280px; }
+    .hero-reel::after { right: auto; left: -8px; }
+    .stats-inner { grid-template-columns: 1fr; gap: 24px; }
+    .stat + .stat { border-left: none; border-top: 1px solid var(--line); padding-top: 24px; }
+    .case-card { grid-template-columns: 1fr; }
+    .case-card .reel { max-width: 260px; }
+    .showcase-row { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a class="logo" href="#">ТАРАНОВ<span>.</span></a>
+    <div class="nav-links">
+      <a href="#">Кейсы</a>
+      <a href="#">Услуги</a>
+      <a href="#">Обо мне</a>
+      <a class="nav-cta" href="#">Обсудить проект</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <div class="hero-copy">
+    <h1 class="display">Рилсы, которые приносят <em>клиентов</em></h1>
+    <p>Продюсирую вертикальные видео для клиник и экспертов: идея, сценарий, съёмка, монтаж и публикация. Дубай и удалённо.</p>
+    <div class="cta-row">
+      <a class="btn-primary" href="#">Обсудить проект</a>
+      <a class="btn-ghost" href="#">Смотреть кейсы</a>
+    </div>
+  </div>
+  <div class="hero-reel">
+    <div class="reel">
+      <div class="reel-badge">
+        <div class="reel-play"></div>
+        <span>здесь будет видео</span>
+      </div>
+      <div class="reel-meta"><b>Шоурил</b><i>0:45</i></div>
+    </div>
+  </div>
+</header>
+
+<section class="stats">
+  <div class="wrap stats-inner">
+    <div class="stat"><b>4 млн</b><span>просмотров на одном ролике</span></div>
+    <div class="stat"><b>15–20</b><span>роликов в месяц на проекте</span></div>
+    <div class="stat"><b>Полный цикл</b><span>от идеи до публикации</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title display">Кейс: клиника, которая получает заявки из рилс</h2>
+    <div class="case-card">
+      <div class="reel">
+        <div class="reel-badge">
+          <div class="reel-play"></div>
+          <span>здесь будет видео</span>
+        </div>
+        <div class="reel-meta"><b>Beauty Concept</b><i>рилс</i></div>
+      </div>
+      <div class="case-info">
+        <h3 class="display">Beauty Concept</h3>
+        <div class="case-niche">Клиника эстетической медицины · Дубай</div>
+        <p>Веду контент клиники с января 2025 года: сценарии, съёмочные дни, монтаж и публикации. Стабильный поток пациентов из рилс без бюджета на рекламу.</p>
+        <div class="case-metrics">
+          <div class="metric"><b>с 01.2025</b><span>на постоянном ведении</span></div>
+          <div class="metric"><b>15+</b><span>роликов ежемесячно</span></div>
+          <div class="metric"><b>заявки</b><span>напрямую из рилс</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0;">
+  <div class="wrap">
+    <h2 class="section-title display">Ролики, которые смотрят до конца</h2>
+    <div class="showcase-row">
+      <div class="reel"><div class="reel-badge"><div class="reel-play"></div><span>здесь будет видео</span></div><div class="reel-meta"><b>Медицина</b><i>1.2 млн</i></div></div>
+      <div class="reel"><div class="reel-badge"><div class="reel-play"></div><span>здесь будет видео</span></div><div class="reel-meta"><b>Бьюти</b><i>860 тыс</i></div></div>
+      <div class="reel"><div class="reel-badge"><div class="reel-play"></div><span>здесь будет видео</span></div><div class="reel-meta"><b>Эксперт</b><i>4 млн</i></div></div>
+      <div class="reel"><div class="reel-badge"><div class="reel-play"></div><span>здесь будет видео</span></div><div class="reel-meta"><b>Авто</b><i>540 тыс</i></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact">
+  <div class="wrap">
+    <h2 class="display">Расскажите о своём проекте</h2>
+    <p>Отвечаю лично, обычно в течение пары часов. Обсудим задачу и я предложу формат, который подойдёт именно вам.</p>
+    <div class="cta-row">
+      <a class="btn-primary" href="#">Написать в WhatsApp</a>
+      <a class="btn-ghost" href="#">Telegram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>Кирилл Таранов · рилс-продюсер</span>
+    <a href="#">Instagram</a>
+  </div>
+</footer>
+
+</body>
+</html>
