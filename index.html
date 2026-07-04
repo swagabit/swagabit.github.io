@@ -15,6 +15,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 <script>
+  // Превью светлой темы: добавь ?theme=light к адресу
+  if (new URLSearchParams(location.search).get("theme") === "light") {
+    document.write('<link rel="stylesheet" href="css/theme-light.css">');
+  }
+</script>
+<script>
   // До первой отрисовки: восстановить язык (страница написана на RU)
   (function () {
     var l = localStorage.getItem("lang");
