@@ -6,9 +6,11 @@ let lang = getLang();
 
 // ---------- контакты ----------
 function wireContacts() {
+  const wa = `https://wa.me/${CONTACTS.whatsappNumber}?text=${encodeURIComponent(CONTACTS.whatsappText[lang])}`;
   document.querySelectorAll("[data-contact]").forEach((a) => {
     const kind = a.getAttribute("data-contact");
-    if (CONTACTS[kind]) a.href = CONTACTS[kind];
+    if (kind === "whatsapp") a.href = wa;
+    else if (CONTACTS[kind]) a.href = CONTACTS[kind];
     if (kind !== "instagram") a.removeAttribute("target");
   });
 }

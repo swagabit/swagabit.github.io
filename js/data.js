@@ -6,7 +6,11 @@
 // ============================================================
 
 export const CONTACTS = {
-  whatsapp: "https://wa.me/971503107247?text=" + encodeURIComponent("Привет! Пишу с сайта, хочу обсудить проект."),
+  whatsappNumber: "971503107247",
+  whatsappText: {
+    ru: "Привет! Пишу с сайта, хочу обсудить проект.",
+    en: "Hi! Found you through the website. I'd like to discuss a project.",
+  },
   telegram: "https://t.me/taranov4",
   instagram: "https://instagram.com/swagaeb",
 };
