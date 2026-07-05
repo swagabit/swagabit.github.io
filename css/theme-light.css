@@ -56,8 +56,13 @@ nav { background: rgba(247, 246, 242, 0.82); }
 .why-card:first-child i { color: rgba(255, 255, 255, 0.4); }
 
 /* AUDIENCE / SERVICES */
-.aud-tab.active { background: var(--text); color: #f7f6f2; border-color: var(--text); }
 .aud-tab:hover { border-color: rgba(22, 21, 15, 0.4); }
+.aud-tab.active {
+  border-color: var(--accent);
+  background:
+    radial-gradient(ellipse 70% 90% at 10% 0%, rgba(31, 63, 191, 0.06), transparent 65%),
+    var(--bg-soft);
+}
 .srv-featured { border-color: rgba(31, 63, 191, 0.4); }
 
 /* ABOUT */

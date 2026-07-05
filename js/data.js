@@ -17,71 +17,76 @@ export const SHOWREEL = {
   poster: null, // например: "media/posters/showreel.jpg"
 };
 
-export const CASES = [
+// Разборы работ. Все клиенты анонимны (решение Кирилла).
+// Структура: задача → что делали (список) → что получилось (словами).
+export const WORKS = [
   {
-    id: "case-1",
+    id: "work-1",
     src: null,
     poster: null,
-    brand: "Молодость",
-    niche: { ru: "Клиника · Дубай", en: "Clinic · Dubai" },
-    title: {
-      ru: "4 000 000 просмотров на одном ролике",
-      en: "4,000,000 views on a single reel",
+    brand: { ru: "Антиэйдж-клиника", en: "Anti-age clinic" },
+    niche: { ru: "Медицина · Дубай", en: "Medical · Dubai" },
+    task: {
+      ru: "Клиника хотела понять, дают ли рилсы что-то кроме красивой ленты.",
+      en: "The clinic wanted to know if reels bring anything beyond a pretty feed.",
     },
-    desc: {
-      ru: "Зашёл с пяти пробных рилс: один набрал 4 миллиона просмотров и привёл клинике около трёх тысяч подписчиков. Дальше клиника выкупила три полных пакета роликов.",
-      en: "Started with five trial reels: one hit 4 million views and brought the clinic around three thousand followers. The clinic then bought three full production packages.",
-    },
-    metrics: [
-      { b: { ru: "4 млн", en: "4M" }, s: { ru: "просмотров на ролике", en: "views on one reel" } },
-      { b: { ru: "+3 тыс", en: "+3K" }, s: { ru: "подписчиков с 5 роликов", en: "followers from 5 reels" } },
-      { b: { ru: "3", en: "3" }, s: { ru: "пакета продолжения", en: "follow-up packages" } },
+    did: [
+      { ru: "Идеи на актуальных трендах ниши", en: "Ideas built on live niche trends" },
+      { ru: "Сценарии с хуками под каждую тему", en: "Scripts with hooks for every topic" },
+      { ru: "Съёмка в клинике за один день", en: "One-day shoot at the clinic" },
+      { ru: "Монтаж: субтитры, обложки, ритм", en: "Editing: subtitles, covers, pacing" },
     ],
+    result: {
+      ru: "Один из первых же роликов разлетелся на миллионы просмотров по всему Дубаю и привёл клинике волну новых подписчиков. Дальше клиника выкупила три полных пакета продолжения.",
+      en: "One of the very first reels spread to millions of views across Dubai and brought the clinic a wave of new followers. The clinic then bought three full follow-up packages.",
+    },
   },
   {
-    id: "case-2",
+    id: "work-2",
     src: null,
     poster: null,
-    brand: "Beauty Concept",
-    niche: { ru: "Клиника эстетической медицины · Дубай", en: "Aesthetic medicine clinic · Dubai" },
-    title: {
-      ru: "Аудитория выросла в 3 раза, пациенты приходят из рилс",
-      en: "Audience tripled, patients come from reels",
+    brand: { ru: "Клиника эстетической медицины", en: "Aesthetic medicine clinic" },
+    niche: { ru: "Бьюти · Дубай", en: "Beauty · Dubai" },
+    task: {
+      ru: "Нужен стабильный контент, который приводит пациентов, пока клиника занимается пациентами.",
+      en: "Steady content that brings patients in while the clinic takes care of patients.",
     },
-    desc: {
-      ru: "Веду контент клиники с января 2025 года: сценарии, съёмочные дни, монтаж и публикации. Аудитория выросла с 3 до 10 тысяч, заявки идут напрямую из видео, без бюджета на рекламу.",
-      en: "Running the clinic's content since January 2025: scripts, shooting days, editing and publishing. The audience grew from 3K to 10K, inquiries come straight from video with zero ad budget.",
-    },
-    metrics: [
-      { b: { ru: "3 → 10 тыс", en: "3K → 10K" }, s: { ru: "подписчиков", en: "followers" } },
-      { b: { ru: "с 01.2025", en: "since 01.2025" }, s: { ru: "на постоянном ведении", en: "ongoing production" } },
-      { b: { ru: "15+", en: "15+" }, s: { ru: "роликов ежемесячно", en: "reels every month" } },
+    did: [
+      { ru: "Контент-план и сценарии каждый месяц", en: "Monthly content plan and scripts" },
+      { ru: "Регулярные съёмочные дни", en: "Regular shooting days" },
+      { ru: "Монтаж и публикации под ключ", en: "Turnkey editing and publishing" },
+      { ru: "Разбор цифр и корректировка тем", en: "Metrics review and topic tuning" },
     ],
+    result: {
+      ru: "Полтора года постоянного ведения. Аудитория выросла втрое, пациенты записываются прямо из директа после роликов, без бюджета на рекламу.",
+      en: "A year and a half of ongoing production. The audience tripled, patients book straight from DMs after watching reels, with zero ad budget.",
+    },
   },
   {
-    id: "case-3",
+    id: "work-3",
     src: null,
     poster: null,
-    brand: "Автоподбор",
-    niche: { ru: "Подбор автомобилей · Дубай", en: "Car sourcing · Dubai" },
-    title: {
-      ru: "Два залёта из первых пяти роликов, вхолодную",
-      en: "Two viral reels out of the first five, from a cold pitch",
+    brand: { ru: "Автоподбор", en: "Car sourcing expert" },
+    niche: { ru: "Авто · Дубай", en: "Auto · Dubai" },
+    task: {
+      ru: "Эксперт по подбору машин без упаковки: знаний много, аудитории нет.",
+      en: "A car sourcing expert with deep knowledge and no audience.",
     },
-    desc: {
-      ru: "Клиент пришёл с холодного захода. Из пяти пробных рилс два набрали 300 и 500 тысяч просмотров, дальше сняли полный пакет из 15 роликов.",
-      en: "The client came from a cold pitch. Two of the five trial reels hit 300K and 500K views, then we shot a full 15-reel package.",
-    },
-    metrics: [
-      { b: { ru: "500 тыс", en: "500K" }, s: { ru: "просмотров, лучший ролик", en: "views, best reel" } },
-      { b: { ru: "300 тыс", en: "300K" }, s: { ru: "просмотров, второй залёт", en: "views, second hit" } },
-      { b: { ru: "15", en: "15" }, s: { ru: "роликов в пакете", en: "reels in the package" } },
+    did: [
+      { ru: "Распаковка экспертности и позиционирование", en: "Expertise unpacking and positioning" },
+      { ru: "Темы, которые цепляют широкую аудиторию", en: "Topics that hook a wide audience" },
+      { ru: "Съёмка живьём: гаражи, осмотры, сделки", en: "Live shooting: garages, inspections, deals" },
+      { ru: "Динамичный монтаж под нишу", en: "Fast-paced editing for the niche" },
     ],
+    result: {
+      ru: "Из первых же пробных роликов два разлетелись на сотни тысяч просмотров. Эксперт заказал полный пакет и получил узнаваемость в своей нише.",
+      en: "Two of the very first trial reels spread to hundreds of thousands of views. The expert ordered a full package and became recognizable in his niche.",
+    },
   },
 ];
 
-// Витрина роликов. tag: подпись слева, metric: цифра справа.
-// Просмотры вписывай реальные, когда добавишь видео.
+// Витрина роликов. tag: подпись слева; metric: бейдж просмотров.
+// Бейдж опционален: залетел ролик — ставим цифру, просто красивый — оставляем пустым.
 export const SHOWCASE = [
   { id: "showcase-1", src: null, poster: null, tag: { ru: "Медицина", en: "Medical" }, metric: { ru: "4 млн", en: "4M" } },
   { id: "showcase-2", src: null, poster: null, tag: { ru: "Авто", en: "Auto" }, metric: { ru: "500 тыс", en: "500K" } },

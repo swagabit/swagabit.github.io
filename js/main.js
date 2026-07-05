@@ -1,4 +1,4 @@
-import { CONTACTS, SHOWREEL, CASES, SHOWCASE } from "./data.js";
+import { CONTACTS, SHOWREEL, WORKS, SHOWCASE } from "./data.js";
 import { DICT, getLang, applyLang } from "./i18n.js";
 import { createReel } from "./video.js";
 
@@ -23,24 +23,31 @@ function renderReels() {
     })
   );
 
-  const casesList = document.getElementById("cases-list");
-  casesList.innerHTML = "";
-  CASES.forEach((c) => {
+  const worksList = document.getElementById("works-list");
+  worksList.innerHTML = "";
+  WORKS.forEach((w) => {
     const card = document.createElement("article");
     card.className = "case-card reveal in";
     const info = document.createElement("div");
     info.className = "case-info";
     info.innerHTML = `
-      <h3 class="display">${c.brand}</h3>
-      <div class="case-niche">${c.niche[lang]}</div>
-      <div class="case-lead">${c.title[lang]}</div>
-      <p>${c.desc[lang]}</p>
-      <div class="case-metrics">${c.metrics
-        .map((m) => `<div class="metric"><b class="display">${m.b[lang]}</b><span>${m.s[lang]}</span></div>`)
-        .join("")}</div>`;
-    card.appendChild(createReel(c, lang, { meta: `<b>${c.brand}</b>` }));
+      <h3 class="display">${w.brand[lang]}</h3>
+      <div class="case-niche">${w.niche[lang]}</div>
+      <div class="work-block">
+        <h4>${DICT[lang]["works.task"]}</h4>
+        <p>${w.task[lang]}</p>
+      </div>
+      <div class="work-block">
+        <h4>${DICT[lang]["works.did"]}</h4>
+        <ul class="work-did">${w.did.map((d) => `<li>${d[lang]}</li>`).join("")}</ul>
+      </div>
+      <div class="work-block">
+        <h4>${DICT[lang]["works.result"]}</h4>
+        <p>${w.result[lang]}</p>
+      </div>`;
+    card.appendChild(createReel(w, lang, { meta: `<b>${w.brand[lang]}</b>` }));
     card.appendChild(info);
-    casesList.appendChild(card);
+    worksList.appendChild(card);
   });
 
   const grid = document.getElementById("showcase-grid");
