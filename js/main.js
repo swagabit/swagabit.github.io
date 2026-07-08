@@ -57,7 +57,9 @@ function renderReels() {
   SHOWCASE.forEach((s) => {
     const cell = document.createElement("div");
     cell.className = "showcase-cell reveal in";
-    const metric = s.metric[lang] ? `<i>${s.metric[lang]}</i>` : "";
+    // бейдж просмотров показываем только у реальных видео:
+    // цифра рядом с заглушкой «здесь будет видео» выглядит как фейк
+    const metric = s.src && s.metric[lang] ? `<i>${s.metric[lang]}</i>` : "";
     cell.appendChild(createReel(s, lang, { meta: `<b>${s.tag[lang]}</b>${metric}` }));
     grid.appendChild(cell);
   });
