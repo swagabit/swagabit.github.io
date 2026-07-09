@@ -17,7 +17,7 @@ export const CONTACTS = {
 
 export const SHOWREEL = {
   id: "showreel",
-  src: null, // например: "media/videos/showreel.mp4"
+  src: "media/videos/test.mp4", // тестовое видео (заменить на шоурил)
   poster: null, // например: "media/posters/showreel.jpg"
 };
 
@@ -53,12 +53,12 @@ export const WORKS = [
       en: "The clinic needed reach, recognition in Dubai and new inquiries.",
     },
     did: {
-      ru: "Проанализировали нишу и поняли, что вылизанная медицинская картинка здесь не сработает. Зашли через острые темы и разборы внешности известных людей.",
-      en: "We analyzed the niche and realized a polished medical look wouldn't work here. We came in through edgy topics and breakdowns of celebrities' looks.",
+      ru: "Проанализировали нишу и поняли, что вылизанная медицинская картинка тут не сработает. Сняли пять разных форматов и зашли через острые темы и разборы внешности известных людей.",
+      en: "We analyzed the niche and realized a polished medical look wouldn't work here. We shot five different formats and came in through edgy topics and breakdowns of well-known people's looks.",
     },
     result: {
-      ru: "Ролик с разбором Асхаба Тамаева порвал алгоритмы и набрал 4 миллиона просмотров. Только с этого видео пришло 5 000 новых подписчиков, а директ забился целевыми вопросами.",
-      en: "A reel breaking down Askhab Tamaev tore through the algorithm and hit 4 million views. That single video brought 5,000 new followers, and the DMs filled up with qualified questions.",
+      ru: "Ролик с разбором набрал 4 миллиона просмотров. Только с этого видео пришло 5 000 новых подписчиков.",
+      en: "A single breakdown reel hit 4 million views. That one video alone brought 5,000 new followers.",
     },
   },
   {
@@ -68,8 +68,8 @@ export const WORKS = [
     brand: { ru: "Клиника эстетической медицины", en: "Aesthetic medicine clinic" },
     niche: { ru: "Бьюти · Дубай", en: "Beauty · Dubai" },
     task: {
-      ru: "Нестабильный поток пациентов, нужен был контент, который будет приводить людей регулярно.",
-      en: "An unstable flow of patients; they needed content that brings people in regularly.",
+      ru: "Нестабильный поток пациентов. Нужен был контент, который будет стабильно привлекать людей.",
+      en: "An unstable flow of patients. They needed content that would steadily attract people.",
     },
     did: {
       ru: "Сделали ставку на экспертный формат, бьющий точно в боли пациентов. Полностью забрали на себя производство: от идей до финального монтажа и выпуска.",
@@ -87,8 +87,8 @@ export const WORKS = [
     brand: { ru: "Автоподбор", en: "Car sourcing" },
     niche: { ru: "Авто · Дубай", en: "Auto · Dubai" },
     task: {
-      ru: "У эксперта огромный опыт, он уже снимал видео, но хотел пробить потолок просмотров в своей узкой нише.",
-      en: "The expert had huge experience and already shot videos, but wanted to break his view ceiling in a narrow niche.",
+      ru: "Эксперт уже снимал видео сам, но упирался в потолок просмотров в своей узкой нише.",
+      en: "The expert already shot videos himself but kept hitting a view ceiling in his narrow niche.",
     },
     did: {
       ru: "Договорились на пять тестовых роликов. Докрутили подачу, добавили живого процесса (гаражи, осмотры, сделки) и внедрили агрессивный динамичный монтаж, чтобы держать внимание.",

@@ -21,7 +21,7 @@ function renderReels() {
   heroWrap.querySelectorAll(".reel").forEach((n) => n.remove());
   heroWrap.appendChild(
     createReel(SHOWREEL, lang, {
-      meta: `<b>${DICT[lang]["reel.showreel"]}</b><i>0:45</i>`,
+      meta: `<b>${DICT[lang]["reel.showreel"]}</b>`,
     })
   );
 
