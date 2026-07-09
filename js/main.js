@@ -1,4 +1,4 @@
-import { CONTACTS, SHOWREEL, WORKS, SHOWCASE } from "./data.js";
+import { CONTACTS, SHOWREEL, WORKS, SHOWCASE, REVIEWS } from "./data.js";
 import { DICT, getLang, applyLang } from "./i18n.js";
 import { createReel } from "./video.js";
 
@@ -41,7 +41,7 @@ function renderReels() {
       </div>
       <div class="work-block">
         <h4>${DICT[lang]["works.did"]}</h4>
-        <ul class="work-did">${w.did.map((d) => `<li>${d[lang]}</li>`).join("")}</ul>
+        <p>${w.did[lang]}</p>
       </div>
       <div class="work-block">
         <h4>${DICT[lang]["works.result"]}</h4>
@@ -50,6 +50,25 @@ function renderReels() {
     card.appendChild(createReel(w, lang, { meta: `<b>${w.brand[lang]}</b>` }));
     card.appendChild(info);
     worksList.appendChild(card);
+  });
+
+  const revGrid = document.getElementById("reviews-grid");
+  revGrid.innerHTML = "";
+  REVIEWS.forEach((r) => {
+    const card = document.createElement("figure");
+    card.className = "review-card reveal in";
+    // Есть скрин переписки — показываем его; нет — показываем текст.
+    if (r.img) {
+      card.classList.add("has-shot");
+      card.innerHTML = `
+        <div class="review-shot"><img src="${r.img}" alt="${r.name[lang]}" loading="lazy"></div>
+        <figcaption class="review-cap"><b>${r.name[lang]}</b><span>${r.tag[lang]}</span></figcaption>`;
+    } else {
+      card.innerHTML = `
+        <blockquote>${r.quote[lang]}</blockquote>
+        <figcaption class="review-cap"><b>${r.name[lang]}</b><span>${r.tag[lang]}</span></figcaption>`;
+    }
+    revGrid.appendChild(card);
   });
 
   const grid = document.getElementById("showcase-grid");

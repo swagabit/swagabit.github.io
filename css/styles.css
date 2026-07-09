@@ -258,6 +258,41 @@ nav {
 .showcase-cell .reel { transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s; }
 .showcase-cell .reel:hover { transform: translateY(-6px); border-color: rgba(255, 255, 255, 0.22); }
 
+/* ---------- REVIEWS ---------- */
+.reviews { border-top: 1px solid var(--line); position: relative; }
+.reviews::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 45% 55% at 12% 15%, rgba(232, 68, 46, 0.05), transparent 65%);
+  pointer-events: none;
+}
+.reviews .section-title, .reviews-grid { position: relative; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 24px); align-items: start; }
+.review-card {
+  border: 1px solid var(--line); border-radius: 20px;
+  background: var(--bg-soft);
+  padding: clamp(22px, 2.6vw, 32px);
+  display: flex; flex-direction: column; gap: 18px;
+}
+.review-card blockquote {
+  font-size: clamp(15.5px, 1.4vw, 17px); color: var(--text); line-height: 1.55;
+}
+.review-card blockquote::before { content: "\201C"; color: var(--accent); font-weight: 700; margin-right: 2px; }
+.review-cap { display: flex; flex-direction: column; gap: 4px; }
+.review-cap b { font-weight: 700; font-size: 14.5px; }
+.review-cap span {
+  align-self: flex-start;
+  border: 1px solid var(--line); border-radius: 100px;
+  padding: 5px 12px; font-size: 12px; font-weight: 600; color: var(--accent);
+}
+/* карточка со скрином переписки */
+.review-card.has-shot { padding: clamp(14px, 1.6vw, 18px); }
+.review-shot {
+  border-radius: 12px; overflow: hidden; border: 1px solid var(--line);
+  background: #101014;
+}
+.review-shot img { display: block; width: 100%; height: auto; }
+
 /* ---------- WHY ---------- */
 .why { border-top: 1px solid var(--line); position: relative; }
 .why::before {
@@ -533,6 +568,7 @@ footer { border-top: 1px solid var(--line); }
   .case-card .reel { max-width: 250px; }
   .showcase-grid { grid-template-columns: repeat(2, 1fr); }
   .showcase-cell:nth-child(even) { transform: translateY(18px); }
+  .reviews-grid { grid-template-columns: 1fr; }
   .why-grid { grid-template-columns: 1fr; }
   .aud-tabs { grid-template-columns: 1fr; }
   .aud-panel { grid-template-columns: 1fr; }

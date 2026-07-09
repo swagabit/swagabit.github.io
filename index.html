@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Кирилл Таранов · рилс-продюсер</title>
-<meta name="description" content="Продюсирую вертикальные видео для бизнесов и экспертов под ключ. От идеи до результата.">
+<meta name="description" content="Продюсирую вертикальные видео для бизнеса и экспертов: от идеи до результата.">
 <meta property="og:title" content="Кирилл Таранов · рилс-продюсер">
 <meta property="og:description" content="Рилсы, которые приносят клиентов. Вертикальные видео под ключ: от идеи до результата.">
 <meta property="og:type" content="website">
@@ -55,7 +55,7 @@
   <div class="wrap hero-grid">
     <div class="hero-copy reveal">
       <h1 class="display" data-i18n="hero.h1">Рилсы, которые приносят <em>клиентов</em></h1>
-      <p data-i18n="hero.sub">Продюсирую вертикальные видео для бизнесов и экспертов под ключ. От идеи до результата.</p>
+      <p data-i18n="hero.sub">Продюсирую вертикальные видео для бизнеса и экспертов: от идеи до результата.</p>
       <div class="cta-row">
         <a class="btn-primary" href="#" data-contact="whatsapp" data-i18n="hero.cta">Обсудить проект</a>
         <a class="btn-ghost" href="#works" data-i18n="hero.cta2">Смотреть работы</a>
@@ -73,15 +73,23 @@
 
 <section class="section showcase-section" id="works">
   <div class="wrap">
-    <h2 class="section-title display reveal" data-i18n="showcase.title">Сначала посмотрите, потом поговорим</h2>
+    <h2 class="section-title display reveal" data-i18n="showcase.title">Примеры работ</h2>
     <div class="showcase-grid" id="showcase-grid"></div>
   </div>
 </section>
 
 <section class="section works">
   <div class="wrap">
-    <h2 class="section-title display reveal" data-i18n="works.title">Три проекта: что было и что стало</h2>
+    <h2 class="section-title display reveal" data-i18n="works.title">Проекты: Точка А и Результат</h2>
     <div id="works-list"></div>
+  </div>
+</section>
+
+<!-- Секция отзывов скрыта, пока нет реальных. Убрать класс hidden, когда добавим скрины/тексты в data.js (REVIEWS). -->
+<section class="section reviews hidden" id="reviews">
+  <div class="wrap">
+    <h2 class="section-title display reveal" data-i18n="rev.title">Что говорят те, с кем работал</h2>
+    <div class="reviews-grid" id="reviews-grid"></div>
   </div>
 </section>
 
@@ -89,10 +97,10 @@
   <div class="wrap">
     <h2 class="section-title display reveal" data-i18n="why.title">Почему именно рилсы</h2>
     <div class="why-grid">
-      <div class="why-card reveal"><i>01</i><h3 data-i18n="why.1h">Люди приходят бесплатно</h3><p data-i18n="why.1t">Алгоритм сам показывает ролики новой аудитории. Вы не платите за каждый показ, как в рекламе.</p></div>
-      <div class="why-card reveal"><i>02</i><h3 data-i18n="why.2h">Аудитория остаётся с вами</h3><p data-i18n="why.2t">Реклама кончилась, и трафик кончился. Подписчик остаётся и видит каждый новый ролик.</p></div>
-      <div class="why-card reveal"><i>03</i><h3 data-i18n="why.3h">Контент прогревает до заявки</h3><p data-i18n="why.3t">Доверие складывается примерно из пятнадцати касаний. Ролики набирают их за вас, пока вы работаете.</p></div>
-      <div class="why-card reveal"><i>04</i><h3 data-i18n="why.4h">Продажи как следствие</h3><p data-i18n="why.4t">Воронка простая: увидели ролик, подписались, самые тёплые написали. Дожимать никого не надо.</p></div>
+      <div class="why-card reveal"><i>01</i><h3 data-i18n="why.1h">Условно бесплатный трафик</h3><p data-i18n="why.1t">Вы платите только за производство видео. Алгоритмы сами ищут вам зрителей: платить за каждый показ, как в таргете, не нужно.</p></div>
+      <div class="why-card reveal"><i>02</i><h3 data-i18n="why.2h">Долгосрочный актив</h3><p data-i18n="why.2t">Реклама встаёт, как только кончается бюджет. Рилсы крутятся в ленте и приносят заявки месяцами.</p></div>
+      <div class="why-card reveal"><i>03</i><h3 data-i18n="why.3h">Масштабирование узнаваемости</h3><p data-i18n="why.3t">Вертикальные видео это самый быстрый способ примелькаться на рынке и стать понятным брендом для своей аудитории.</p></div>
+      <div class="why-card reveal"><i>04</i><h3 data-i18n="why.4h">Прогрев до заявки</h3><p data-i18n="why.4t">Зритель смотрит ролики, привыкает к вашей подаче, закрывает для себя возражения и пишет в директ уже готовым к покупке.</p></div>
     </div>
   </div>
 </section>
@@ -102,53 +110,45 @@
     <h2 class="section-title display reveal" data-i18n="aud.title">Кто вы? Расскажу, как будем работать</h2>
     <div class="aud-tabs reveal" role="tablist">
       <button type="button" class="aud-tab active" role="tab" aria-selected="true" data-aud="biz">
-        <b class="display" data-i18n="aud.tab1">Я владелец бизнеса</b>
-        <span data-i18n="aud.tab1d">Нужны клиенты, а не красивая лента</span>
+        <b class="display" data-i18n="aud.tab1">Компания / Бренд</b>
+        <span data-i18n="aud.tab1d">Нужны продажи, а не просто лента</span>
       </button>
       <button type="button" class="aud-tab" role="tab" aria-selected="false" data-aud="exp">
         <b class="display" data-i18n="aud.tab2">Я эксперт</b>
-        <span data-i18n="aud.tab2d">Хочу, чтобы меня знали и покупали</span>
+        <span data-i18n="aud.tab2d">Хочу монетизировать свой опыт</span>
       </button>
     </div>
     <div class="aud-panel reveal" data-aud-panel="biz">
       <div class="aud-copy">
-        <h3 class="display" data-i18n="aud.b.h">Заявки из рилсов. Блогером становиться не надо</h3>
-        <p data-i18n="aud.b.t">Вы занимаетесь клиентами, я занимаюсь видео: идеи, съёмка, монтаж, выпуск. От вас полдня на съёмку раз в пару недель.</p>
-        <div class="aud-why">
-          <h4 data-i18n="aud.b.whyh">Почему это работает</h4>
-          <p data-i18n="aud.b.why">Реклама показывает вас один раз и за деньги. Подписчик остаётся и смотрит бесплатно: ролики греют людей до заявки, пока вы работаете.</p>
-        </div>
+        <h3 class="display" data-i18n="aud.b.h">Делаем из соцсетей канал продаж</h3>
+        <p data-i18n="aud.b.t">Забираем на себя полный цикл производства видео, чтобы не отвлекать вашу команду от бизнес-процессов.</p>
         <a class="btn-primary aud-btn" href="#" data-contact="whatsapp" data-i18n="aud.cta">Обсудить проект</a>
       </div>
       <div class="aud-side">
-        <h4 data-i18n="aud.b.lih">Что беру на себя</h4>
+        <h4 data-i18n="aud.b.lih">Что я беру на себя</h4>
         <ul class="aud-list">
-          <li data-i18n="aud.b.li1">Смотрю нишу и конкурентов</li>
-          <li data-i18n="aud.b.li2">Придумываю идеи и пишу сценарии</li>
-          <li data-i18n="aud.b.li3">Приезжаю и снимаю у вас</li>
-          <li data-i18n="aud.b.li4">Монтаж, обложки, публикации</li>
-          <li data-i18n="aud.b.li5">Слежу за цифрами, меняю темы</li>
+          <li data-i18n="aud.b.li1">Анализ ниши и конкурентов</li>
+          <li data-i18n="aud.b.li2">Разработка форматов под бренд</li>
+          <li data-i18n="aud.b.li3">Выездные съёмки</li>
+          <li data-i18n="aud.b.li4">Монтаж</li>
+          <li data-i18n="aud.b.li5">Выпуск и аналитика</li>
         </ul>
       </div>
     </div>
     <div class="aud-panel hidden" data-aud-panel="exp">
       <div class="aud-copy">
-        <h3 class="display" data-i18n="aud.e.h">Личный бренд, который продаёт за вас</h3>
-        <p data-i18n="aud.e.t">Люди подписываются на человека, а покупают у эксперта. Помогаю стать лицом ниши, даже если камера пока пугает.</p>
-        <div class="aud-why">
-          <h4 data-i18n="aud.e.whyh">Почему это работает</h4>
-          <p data-i18n="aud.e.why">Доверие складывается примерно из пятнадцати касаний. Ролики набирают их за вас: люди узнают вас, привыкают и приходят покупать.</p>
-        </div>
+        <h3 class="display" data-i18n="aud.e.h">Личный бренд, которому доверяют</h3>
+        <p data-i18n="aud.e.t">Помогаю монетизировать опыт через видео. Находим вашу сильную сторону и масштабируем её.</p>
         <a class="btn-primary aud-btn" href="#" data-contact="whatsapp" data-i18n="aud.cta">Обсудить проект</a>
       </div>
       <div class="aud-side">
-        <h4 data-i18n="aud.e.lih">Что беру на себя</h4>
+        <h4 data-i18n="aud.e.lih">Что я беру на себя</h4>
         <ul class="aud-list">
-          <li data-i18n="aud.e.li1">Распаковка: кто вы и про что</li>
-          <li data-i18n="aud.e.li2">Идея блога в одном предложении</li>
-          <li data-i18n="aud.e.li3">Упаковка профиля: имя, био, актуальные</li>
-          <li data-i18n="aud.e.li4">Темы, сценарии, съёмка по системе</li>
-          <li data-i18n="aud.e.li5">Разбор цифр: что залетает и почему</li>
+          <li data-i18n="aud.e.li1">Распаковка экспертности</li>
+          <li data-i18n="aud.e.li2">Темы и сценарии</li>
+          <li data-i18n="aud.e.li3">Постановка кадра и помощь на съёмке</li>
+          <li data-i18n="aud.e.li4">Динамичный монтаж</li>
+          <li data-i18n="aud.e.li5">Разбор цифр</li>
         </ul>
       </div>
     </div>
@@ -159,12 +159,12 @@
   <div class="wrap">
     <h2 class="section-title display reveal" data-i18n="proc.title">Как проходит работа</h2>
     <ol class="proc-list">
-      <li class="reveal"><i>1</i><div><h3 data-i18n="proc.1h">Знакомство</h3><p data-i18n="proc.1t">Созваниваемся, разбираю вашу задачу и честно говорю, какой формат подойдёт.</p><div class="proc-chips"><span data-i18n="proc.1c1">созвон</span><span data-i18n="proc.1c2">разбор задачи</span><span data-i18n="proc.1c3">выбор формата</span></div></div></li>
-      <li class="reveal"><i>2</i><div><h3 data-i18n="proc.2h">Анализ и стратегия</h3><p data-i18n="proc.2t">Смотрю нишу, конкурентов и вашу аудиторию. Решаем, чем выделяться и о чём говорить.</p><div class="proc-chips"><span data-i18n="proc.2c1">анализ конкурентов</span><span data-i18n="proc.2c2">облако тем</span><span data-i18n="proc.2c3">позиционирование</span></div></div></li>
-      <li class="reveal"><i>3</i><div><h3 data-i18n="proc.3h">Идеи и сценарии</h3><p data-i18n="proc.3t">Пишу сценарии с хуком в первые три секунды: они решают, будут ли смотреть дальше.</p><div class="proc-chips"><span data-i18n="proc.3c1">идеи с хуками</span><span data-i18n="proc.3c2">сценарии</span><span data-i18n="proc.3c3">раскадровка</span></div></div></li>
-      <li class="reveal"><i>4</i><div><h3 data-i18n="proc.4h">Съёмочный день</h3><p data-i18n="proc.4t">Приезжаю со светом, звуком и реквизитом. Один день закрывает контент на недели, от вас только быть в кадре.</p><div class="proc-chips"><span data-i18n="proc.4c1">свет и звук</span><span data-i18n="proc.4c2">реквизит</span><span data-i18n="proc.4c3">вы только в кадре</span></div></div></li>
-      <li class="reveal"><i>5</i><div><h3 data-i18n="proc.5h">Монтаж</h3><p data-i18n="proc.5t">Субтитры, обложки, ритм. Режу всё лишнее, чтобы ролик держал до конца.</p><div class="proc-chips"><span data-i18n="proc.5c1">субтитры</span><span data-i18n="proc.5c2">обложки</span><span data-i18n="proc.5c3">перебивки и ритм</span></div></div></li>
-      <li class="reveal"><i>6</i><div><h3 data-i18n="proc.6h">Выпуск и цифры</h3><p data-i18n="proc.6t">Публикую, смотрю удержание и скипрейт, корректирую темы. Контент это система, а не лотерея.</p><div class="proc-chips"><span data-i18n="proc.6c1">публикация</span><span data-i18n="proc.6c2">разбор метрик</span><span data-i18n="proc.6c3">усиление тем</span></div></div></li>
+      <li class="reveal"><i>1</i><div><h3 data-i18n="proc.1h">Знакомство</h3><p data-i18n="proc.1t">Созваниваемся, обсуждаем вашу задачу. Честно говорю, какой формат сработает лучше всего.</p><div class="proc-chips"><span data-i18n="proc.1c1">созвон</span><span data-i18n="proc.1c2">разбор задачи</span><span data-i18n="proc.1c3">выбор формата</span></div></div></li>
+      <li class="reveal"><i>2</i><div><h3 data-i18n="proc.2h">Анализ и стратегия</h3><p data-i18n="proc.2t">Изучаю конкурентов и аудиторию. Определяем чёткое позиционирование.</p><div class="proc-chips"><span data-i18n="proc.2c1">анализ конкурентов</span><span data-i18n="proc.2c2">аудитория</span><span data-i18n="proc.2c3">позиционирование</span></div></div></li>
+      <li class="reveal"><i>3</i><div><h3 data-i18n="proc.3h">Идеи и сценарии</h3><p data-i18n="proc.3t">Пишу тексты с сильными хуками: они решают, будут ли вас смотреть дальше первых секунд.</p><div class="proc-chips"><span data-i18n="proc.3c1">идеи с хуками</span><span data-i18n="proc.3c2">сценарии</span><span data-i18n="proc.3c3">раскадровка</span></div></div></li>
+      <li class="reveal"><i>4</i><div><h3 data-i18n="proc.4h">Съёмочный день</h3><p data-i18n="proc.4t">Приезжаю со светом и звуком. За одну встречу снимаем материал на месяц вперёд.</p><div class="proc-chips"><span data-i18n="proc.4c1">свет и звук</span><span data-i18n="proc.4c2">реквизит</span><span data-i18n="proc.4c3">вы только в кадре</span></div></div></li>
+      <li class="reveal"><i>5</i><div><h3 data-i18n="proc.5h">Монтаж</h3><p data-i18n="proc.5t">Делаем динамичную склейку, субтитры, перебивки. Режем всё лишнее для удержания внимания.</p><div class="proc-chips"><span data-i18n="proc.5c1">субтитры</span><span data-i18n="proc.5c2">перебивки</span><span data-i18n="proc.5c3">динамика и ритм</span></div></div></li>
+      <li class="reveal"><i>6</i><div><h3 data-i18n="proc.6h">Выпуск и цифры</h3><p data-i18n="proc.6t">Выкладываем ролики, анализируем метрики и бьём в те темы, которые заходят лучше всего.</p><div class="proc-chips"><span data-i18n="proc.6c1">публикация</span><span data-i18n="proc.6c2">разбор метрик</span><span data-i18n="proc.6c3">усиление тем</span></div></div></li>
     </ol>
   </div>
 </section>
@@ -175,37 +175,37 @@
     <div class="srv-grid">
       <div class="srv-card reveal">
         <h3 class="display" data-i18n="srv.1h">Поток роликов</h3>
-        <p data-i18n="srv.1t">Стабильный выпуск рилсов: идеи, съёмка, монтаж, публикации. Для тех, у кого остальное уже настроено.</p>
+        <p data-i18n="srv.1t">Регулярное производство: от идей до монтажа и публикации. Подойдёт тем, у кого уже настроены продажи и есть базовая упаковка.</p>
         <ul>
-          <li data-i18n="srv.1li1">Анализ ниши и конкурентов</li>
-          <li data-i18n="srv.1li2">Идеи с хуками и сценарии</li>
+          <li data-i18n="srv.1li1">Анализ ниши</li>
+          <li data-i18n="srv.1li2">Сценарии</li>
           <li data-i18n="srv.1li3">Съёмочные дни</li>
-          <li data-i18n="srv.1li4">Монтаж: субтитры, хуки, обложки</li>
+          <li data-i18n="srv.1li4">Монтаж и публикация</li>
         </ul>
       </div>
       <div class="srv-card srv-featured reveal">
         <span class="srv-badge" data-i18n="srv.badge">популярный</span>
         <h3 class="display" data-i18n="srv.2h">Продюсирование под ключ</h3>
-        <p data-i18n="srv.2t">Полное присутствие в соцсетях с командой: SMM, дизайнер, спец по воронкам. Вы только снимаетесь.</p>
+        <p data-i18n="srv.2t">Комплексная работа. Полная упаковка профиля и ведение сторис с моей командой. Вы только в кадре.</p>
         <ul>
-          <li data-i18n="srv.2li1">Всё из «Потока роликов»</li>
-          <li data-i18n="srv.2li2">Упаковка профиля и позиционирование</li>
-          <li data-i18n="srv.2li3">Сторис, актуальные, воронки</li>
-          <li data-i18n="srv.2li4">Фотосессия и визуал ленты</li>
+          <li data-i18n="srv.2li1">Всё из первого тарифа</li>
+          <li data-i18n="srv.2li2">Упаковка профиля</li>
+          <li data-i18n="srv.2li3">Сторис и воронки</li>
+          <li data-i18n="srv.2li4">Визуал ленты</li>
         </ul>
       </div>
     </div>
     <div class="srv-mini reveal">
       <h3 class="display" data-i18n="srv.3h">Разовые задачи</h3>
-      <p><span data-i18n="srv.3t">Ивент, съёмочный день или монтаж ваших материалов: такое тоже беру.</span></p>
+      <p><span data-i18n="srv.3t">Съёмка мероприятий, подкастов или консалтинг. Обсуждаем индивидуально.</span></p>
       <div class="srv-mini-chips">
-        <span data-i18n="srv.3li1">съёмка ивентов</span>
-        <span data-i18n="srv.3li2">съёмочный день</span>
-        <span data-i18n="srv.3li3">монтаж материалов</span>
+        <span data-i18n="srv.3li1">мероприятия</span>
+        <span data-i18n="srv.3li2">подкасты</span>
+        <span data-i18n="srv.3li3">консалтинг</span>
       </div>
     </div>
     <div class="srv-footer reveal">
-      <span data-i18n="srv.price">Условия и цены: расскажу после созвона, когда пойму задачу</span>
+      <span data-i18n="srv.price">Цены и условия: считаю смету после созвона, когда пойму задачу</span>
       <a class="btn-primary" href="#" data-contact="whatsapp" data-i18n="srv.cta">Обсудить проект</a>
     </div>
   </div>
@@ -213,27 +213,27 @@
 
 <section class="section faq">
   <div class="wrap">
-    <h2 class="section-title display reveal" data-i18n="faq.title">Вопросы, которые задают все</h2>
+    <h2 class="section-title display reveal" data-i18n="faq.title">Частые вопросы</h2>
     <div class="faq-list reveal">
       <details>
         <summary data-i18n="faq.q1">Сколько это стоит?</summary>
-        <p data-i18n="faq.a1">Зависит от количества роликов, съёмочных дней и сложности монтажа. Точную стоимость назову после короткого созвона, когда пойму задачу.</p>
+        <p data-i18n="faq.a1">Зависит от объёма: количества роликов, съёмочных дней и сложности монтажа. Точную цифру называю после звонка.</p>
       </details>
       <details>
         <summary data-i18n="faq.q2">Сколько времени это займёт у меня?</summary>
-        <p data-i18n="faq.a2">Пара часов на съёмочный день раз в две-четыре недели. Идеи, сценарии, монтаж и публикации на мне.</p>
+        <p data-i18n="faq.a2">Пару часов раз в 2-4 недели. Всю подготовку, съёмку и монтаж я забираю на себя.</p>
       </details>
       <details>
         <summary data-i18n="faq.q3">Когда ждать результат?</summary>
-        <p data-i18n="faq.a3">Первые ролики выходят в течение пары недель. Система набирает обороты за два-три месяца: алгоритмам нужно время, и я не обещаю залёт с первого видео.</p>
+        <p data-i18n="faq.a3">Первые видео выходят через 1-2 недели. Полноценно система разгоняется за пару месяцев: алгоритмам нужно время.</p>
       </details>
       <details>
         <summary data-i18n="faq.q4">Я боюсь камеры и не знаю, о чём говорить</summary>
-        <p data-i18n="faq.a4">Нормально, так у большинства. Сценарий пишу заранее, на съёмке подсказываю, дубли не ограничены. Через пару съёмок камера перестаёт пугать.</p>
+        <p data-i18n="faq.a4">Это абсолютно нормально. Я пишу сценарии заранее, на площадке помогаю и направляю. Дубли не ограничены.</p>
       </details>
       <details>
         <summary data-i18n="faq.q5">Чем вы отличаетесь от SMM-агентства?</summary>
-        <p data-i18n="faq.a5">SMM ведёт ленту по контент-плану. Я отвечаю за ролик целиком: идея, хук, съёмка, монтаж и цифры после выхода. Спрос с одного человека, а не с отдела.</p>
+        <p data-i18n="faq.a5">SMM-агентство делает посты по графику. Я отвечаю за весь цикл производства видео. Спрос с одного человека, а не с целого отдела.</p>
       </details>
     </div>
   </div>
@@ -246,8 +246,8 @@
     </div>
     <div class="about-copy reveal">
       <h2 class="section-title display" data-i18n="about.title">Обо мне</h2>
-      <p data-i18n="about.p1">Я Кирилл Таранов, рилс-продюсер. Работаю с проектами в Дубае и по миру.</p>
-      <p data-i18n="about.p2">Сам придумываю, сам снимаю, сам монтирую. Продюсер, а не сммщик: отвечаю за результат, а не за красивые кадры.</p>
+      <p data-i18n="about.p1">Я Кирилл Таранов, рилс-продюсер. Работаю с проектами в Дубае и по всему миру.</p>
+      <p data-i18n="about.p2">Сам придумываю, сам снимаю, сам монтирую. Отвечаю за конечный результат и заявки, а не за красивые кадры.</p>
       <a class="about-ig" href="#" data-contact="instagram" target="_blank" rel="noopener">Instagram ↗</a>
     </div>
   </div>
@@ -255,14 +255,14 @@
 
 <section class="section contact" id="contact">
   <div class="wrap">
-    <h2 class="display reveal" data-i18n="contact.title">Расскажите, <em>что у вас за проект</em></h2>
-    <p class="reveal" data-i18n="contact.sub">Пишите как удобно, отвечаю сам, обычно в пределах пары часов. Разберём задачу, предложу формат под неё.</p>
+    <h2 class="display reveal" data-i18n="contact.title">Расскажите <em>о вашем проекте</em></h2>
+    <p class="reveal" data-i18n="contact.sub">Пишите куда удобно, отвечаю сам в течение пары часов. Разберём задачу, предложу рабочий формат под неё.</p>
     <ol class="contact-steps reveal">
       <li data-i18n="contact.s1">Пишете в WhatsApp или Telegram</li>
-      <li data-i18n="contact.s2">Задам пару вопросов о проекте</li>
-      <li data-i18n="contact.s3">Созвон 15 минут: план и стоимость</li>
+      <li data-i18n="contact.s2">Задаю пару вопросов</li>
+      <li data-i18n="contact.s3">Короткий созвон: обсуждаем план и стоимость</li>
     </ol>
-    <p class="contact-note reveal" data-i18n="contact.note">Ни к чему не обязывает</p>
+    <p class="contact-note reveal" data-i18n="contact.note">Общение ни к чему не обязывает</p>
     <div class="cta-row reveal">
       <a class="btn-primary" href="#" data-contact="whatsapp" data-i18n="contact.wa">Написать в WhatsApp</a>
       <a class="btn-ghost" href="#" data-contact="telegram" data-i18n="contact.tg">Telegram</a>

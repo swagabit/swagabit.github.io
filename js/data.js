@@ -21,81 +21,123 @@ export const SHOWREEL = {
   poster: null, // например: "media/posters/showreel.jpg"
 };
 
-// Разборы работ. Все клиенты анонимны (решение Кирилла).
-// Структура: задача → что делали (список) → что получилось (словами).
+// Разборы работ. Структура: Точка А → что делали → результат.
 export const WORKS = [
   {
     id: "work-1",
     src: null,
     poster: null,
-    brand: { ru: "Антиэйдж-клиника", en: "Anti-age clinic" },
-    niche: { ru: "Медицина · Дубай", en: "Medical · Dubai" },
+    brand: { ru: "Личный блог", en: "Personal blog" },
+    niche: { ru: "Стратегия и консалтинг", en: "Strategy & consulting" },
     task: {
-      ru: "Клиника хотела понять, дают ли рилсы что-то кроме красивой ленты.",
-      en: "The clinic wanted to know if reels bring anything beyond a pretty feed.",
+      ru: "Аудитория висела на 10 тысячах. Автор снимала хаотичные разговорные видео, роста не было.",
+      en: "The audience was stuck at 10,000. The author shot chaotic talking-head videos with no growth.",
     },
-    did: [
-      { ru: "Идеи на актуальных трендах ниши", en: "Ideas built on live niche trends" },
-      { ru: "Сценарии с хуками под каждую тему", en: "Scripts with hooks for every topic" },
-      { ru: "Съёмка в клинике за один день", en: "One-day shoot at the clinic" },
-      { ru: "Монтаж: субтитры, обложки, ритм", en: "Editing: subtitles, covers, pacing" },
-    ],
+    did: {
+      ru: "Проанализировали контент и поняли, в чём главная фишка. Сделали акцент на органичном образе автора: русская девушка рассказывает треш-истории со свиданий на английском, с сигаретой в руке и отборным матом. Обернули эту искренность в формат yapping и начали брать объёмом без сложного монтажа.",
+      en: "We analyzed the content and found the core hook. We leaned into the author's organic character: a Russian girl telling trashy dating stories in English, cigarette in hand and plenty of swearing. We wrapped that honesty into a yapping format and went for volume without heavy editing.",
+    },
     result: {
-      ru: "Один из первых же роликов разлетелся на миллионы просмотров по всему Дубаю и привёл клинике волну новых подписчиков. Дальше клиника выкупила три полных пакета продолжения.",
-      en: "One of the very first reels spread to millions of views across Dubai and brought the clinic a wave of new followers. The clinic then bought three full follow-up packages.",
+      ru: "Образ идеально зацепил аудиторию, ролики пробили алгоритмы. Блог вырос на 100 000 подписчиков без копейки вложений в трафик.",
+      en: "The character clicked with the audience and the reels broke through the algorithm. The blog grew by 100,000 followers without a cent spent on traffic.",
     },
   },
   {
     id: "work-2",
     src: null,
     poster: null,
-    brand: { ru: "Клиника эстетической медицины", en: "Aesthetic medicine clinic" },
-    niche: { ru: "Бьюти · Дубай", en: "Beauty · Dubai" },
+    brand: { ru: "Антиэйдж-клиника", en: "Anti-age clinic" },
+    niche: { ru: "Медицина · Дубай", en: "Medical · Dubai" },
     task: {
-      ru: "Нужен стабильный контент, который приводит пациентов, пока клиника занимается пациентами.",
-      en: "Steady content that brings patients in while the clinic takes care of patients.",
+      ru: "Клинике нужны были охваты, узнаваемость в Дубае и новые заявки.",
+      en: "The clinic needed reach, recognition in Dubai and new inquiries.",
     },
-    did: [
-      { ru: "Контент-план и сценарии каждый месяц", en: "Monthly content plan and scripts" },
-      { ru: "Регулярные съёмочные дни", en: "Regular shooting days" },
-      { ru: "Монтаж и публикации под ключ", en: "Turnkey editing and publishing" },
-      { ru: "Разбор цифр и корректировка тем", en: "Metrics review and topic tuning" },
-    ],
+    did: {
+      ru: "Проанализировали нишу и поняли, что вылизанная медицинская картинка здесь не сработает. Зашли через острые темы и разборы внешности известных людей.",
+      en: "We analyzed the niche and realized a polished medical look wouldn't work here. We came in through edgy topics and breakdowns of celebrities' looks.",
+    },
     result: {
-      ru: "Полтора года постоянного ведения. Аудитория выросла втрое, пациенты записываются прямо из директа после роликов, без бюджета на рекламу.",
-      en: "A year and a half of ongoing production. The audience tripled, patients book straight from DMs after watching reels, with zero ad budget.",
+      ru: "Ролик с разбором Асхаба Тамаева порвал алгоритмы и набрал 4 миллиона просмотров. Только с этого видео пришло 5 000 новых подписчиков, а директ забился целевыми вопросами.",
+      en: "A reel breaking down Askhab Tamaev tore through the algorithm and hit 4 million views. That single video brought 5,000 new followers, and the DMs filled up with qualified questions.",
     },
   },
   {
     id: "work-3",
     src: null,
     poster: null,
-    brand: { ru: "Автоподбор", en: "Car sourcing expert" },
+    brand: { ru: "Клиника эстетической медицины", en: "Aesthetic medicine clinic" },
+    niche: { ru: "Бьюти · Дубай", en: "Beauty · Dubai" },
+    task: {
+      ru: "Нестабильный поток пациентов, нужен был контент, который будет приводить людей регулярно.",
+      en: "An unstable flow of patients; they needed content that brings people in regularly.",
+    },
+    did: {
+      ru: "Сделали ставку на экспертный формат, бьющий точно в боли пациентов. Полностью забрали на себя производство: от идей до финального монтажа и выпуска.",
+      en: "We bet on an expert format aimed straight at patients' pain points. We took over production end to end: from ideas to final edit and release.",
+    },
+    result: {
+      ru: "Аудитория клиники выросла в три раза (с 3 до 11+ тысяч). Instagram стал стабильным источником лидов на процедуры.",
+      en: "The clinic's audience tripled (from 3,000 to 11,000+). Instagram became a steady source of leads for procedures.",
+    },
+  },
+  {
+    id: "work-4",
+    src: null,
+    poster: null,
+    brand: { ru: "Автоподбор", en: "Car sourcing" },
     niche: { ru: "Авто · Дубай", en: "Auto · Dubai" },
     task: {
-      ru: "Эксперт по подбору машин без упаковки: знаний много, аудитории нет.",
-      en: "A car sourcing expert with deep knowledge and no audience.",
+      ru: "У эксперта огромный опыт, он уже снимал видео, но хотел пробить потолок просмотров в своей узкой нише.",
+      en: "The expert had huge experience and already shot videos, but wanted to break his view ceiling in a narrow niche.",
     },
-    did: [
-      { ru: "Распаковка экспертности и позиционирование", en: "Expertise unpacking and positioning" },
-      { ru: "Темы, которые цепляют широкую аудиторию", en: "Topics that hook a wide audience" },
-      { ru: "Съёмка живьём: гаражи, осмотры, сделки", en: "Live shooting: garages, inspections, deals" },
-      { ru: "Динамичный монтаж под нишу", en: "Fast-paced editing for the niche" },
-    ],
+    did: {
+      ru: "Договорились на пять тестовых роликов. Докрутили подачу, добавили живого процесса (гаражи, осмотры, сделки) и внедрили агрессивный динамичный монтаж, чтобы держать внимание.",
+      en: "We agreed on five test reels. We sharpened the delivery, added live process (garages, inspections, deals) and brought in aggressive, fast-paced editing to hold attention.",
+    },
     result: {
-      ru: "Из первых же пробных роликов два разлетелись на сотни тысяч просмотров. Эксперт заказал полный пакет и получил узнаваемость в своей нише.",
-      en: "Two of the very first trial reels spread to hundreds of thousands of views. The expert ordered a full package and became recognizable in his niche.",
+      ru: "Из пяти тестовых рилсов два узкоспециализированных ролика залетели на 500 000 и 200 000 просмотров. Эксперт забрал формат в постоянную работу.",
+      en: "Out of five test reels, two highly specialized ones took off to 500,000 and 200,000 views. The expert took the format into ongoing work.",
     },
+  },
+];
+
+// Отзывы. Два режима на выбор для каждого:
+//   1) СКРИН переписки — положи картинку в media/reviews/ и укажи img.
+//      Это самый честный вариант: живую переписку не подделаешь.
+//   2) ТЕКСТ — если скрина нет, оставь img: null и заполни quote/name.
+// tag — что именно делали для человека (продюсирование / съёмка / монтаж).
+// Так честно: видно, что не у всех было полное ведение.
+export const REVIEWS = [
+  {
+    id: "review-1",
+    img: null, // "media/reviews/1.jpg"
+    quote: { ru: "Здесь будет отзыв клиента", en: "Client review goes here" },
+    name: { ru: "Клиент, Дубай", en: "Client, Dubai" },
+    tag: { ru: "Продюсирование", en: "Full production" },
+  },
+  {
+    id: "review-2",
+    img: null,
+    quote: { ru: "Здесь будет отзыв клиента", en: "Client review goes here" },
+    name: { ru: "Клиент, Дубай", en: "Client, Dubai" },
+    tag: { ru: "Съёмка ивента", en: "Event shooting" },
+  },
+  {
+    id: "review-3",
+    img: null,
+    quote: { ru: "Здесь будет отзыв клиента", en: "Client review goes here" },
+    name: { ru: "Клиент, Дубай", en: "Client, Dubai" },
+    tag: { ru: "Монтаж материалов", en: "Footage editing" },
   },
 ];
 
 // Витрина роликов. tag: подпись слева; metric: бейдж просмотров.
 // Бейдж опционален: залетел ролик — ставим цифру, просто красивый — оставляем пустым.
 export const SHOWCASE = [
-  { id: "showcase-1", src: null, poster: null, tag: { ru: "Медицина", en: "Medical" }, metric: { ru: "4 млн", en: "4M" } },
-  { id: "showcase-2", src: null, poster: null, tag: { ru: "Авто", en: "Auto" }, metric: { ru: "500 тыс", en: "500K" } },
-  { id: "showcase-3", src: null, poster: null, tag: { ru: "Бьюти", en: "Beauty" }, metric: { ru: "", en: "" } },
-  { id: "showcase-4", src: null, poster: null, tag: { ru: "Авто", en: "Auto" }, metric: { ru: "300 тыс", en: "300K" } },
-  { id: "showcase-5", src: null, poster: null, tag: { ru: "Эксперт", en: "Expert" }, metric: { ru: "", en: "" } },
-  { id: "showcase-6", src: null, poster: null, tag: { ru: "Лайфстайл", en: "Lifestyle" }, metric: { ru: "", en: "" } },
+  { id: "showcase-1", src: null, poster: null, tag: { ru: "Лайфстайл", en: "Lifestyle" }, metric: { ru: "+100к подписчиков", en: "+100K followers" } },
+  { id: "showcase-2", src: null, poster: null, tag: { ru: "Медицина", en: "Medical" }, metric: { ru: "4 млн", en: "4M" } },
+  { id: "showcase-3", src: null, poster: null, tag: { ru: "Авто", en: "Auto" }, metric: { ru: "500 тыс", en: "500K" } },
+  { id: "showcase-4", src: null, poster: null, tag: { ru: "Бьюти", en: "Beauty" }, metric: { ru: "", en: "" } },
+  { id: "showcase-5", src: null, poster: null, tag: { ru: "Авто", en: "Auto" }, metric: { ru: "300 тыс", en: "300K" } },
+  { id: "showcase-6", src: null, poster: null, tag: { ru: "Эксперт", en: "Expert" }, metric: { ru: "", en: "" } },
 ];
