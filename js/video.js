@@ -41,7 +41,11 @@ export function createReel(entry, lang, opts = {}) {
     video.setAttribute("muted", "");
     video.setAttribute("playsinline", "");
     video.preload = "none";
-    if (entry.poster) video.poster = entry.poster;
+    // постер: явный из data.js либо автоматически из имени видео
+    // (media/videos/x.mp4 -> media/posters/x.jpg). Показывает стоп-кадр
+    // сразу, даже если автоплей заблокирован.
+    const poster = entry.poster || entry.src.replace("/videos/", "/posters/").replace(/\.mp4$/, ".jpg");
+    if (poster) video.poster = poster;
     video.dataset.src = entry.src;
     frame.appendChild(video);
 
