@@ -1,7 +1,7 @@
 // ============================================================
 // ЕДИНЫЙ ФАЙЛ КОНТЕНТА.
-// Заменить заглушку на видео: кинь файл в media/videos/
-// и поменяй src: null на src: "media/videos/имя-файла.mp4".
+// Видео: положи файл в media/videos/ и впиши путь в src.
+// src: null -> премиальная заглушка «здесь будет видео».
 // Постер (превью): media/posters/, поле poster.
 // ============================================================
 
@@ -17,18 +17,22 @@ export const CONTACTS = {
 
 export const SHOWREEL = {
   id: "showreel",
-  src: "media/videos/test.mp4", // тестовое видео (заменить на шоурил)
+  src: "media/videos/showreel.mp4",
   poster: null, // например: "media/posters/showreel.jpg"
 };
 
-// Разборы работ. Структура: Точка А → что делали → результат.
+// Разборы работ. У каждого: фоновая цифра (metric) + до 3 роликов (videos).
+// Пустой слот в videos (src: null) рендерится заглушкой — так и задумано,
+// пока не добавлены все ролики.
 export const WORKS = [
   {
     id: "work-1",
-    src: null,
-    poster: null,
     brand: { ru: "Личный блог", en: "Personal blog" },
     niche: { ru: "Стратегия и консалтинг", en: "Strategy & consulting" },
+    metric: {
+      num: { ru: "100 000+", en: "100K+" },
+      unit: { ru: "подписчиков", en: "followers" },
+    },
     task: {
       ru: "Аудитория висела на 10 тысячах. Автор снимала хаотичные разговорные видео, роста не было.",
       en: "The audience was stuck at 10,000. The author shot chaotic talking-head videos with no growth.",
@@ -41,13 +45,20 @@ export const WORKS = [
       ru: "Образ идеально зацепил аудиторию, ролики пробили алгоритмы. Блог вырос на 100 000 подписчиков без копейки вложений в трафик.",
       en: "The character clicked with the audience and the reels broke through the algorithm. The blog grew by 100,000 followers without a cent spent on traffic.",
     },
+    videos: [
+      { src: null, poster: null },
+      { src: null, poster: null },
+      { src: null, poster: null },
+    ],
   },
   {
     id: "work-2",
-    src: null,
-    poster: null,
     brand: { ru: "Антиэйдж-клиника", en: "Anti-age clinic" },
     niche: { ru: "Медицина · Дубай", en: "Medical · Dubai" },
+    metric: {
+      num: { ru: "4 000 000+", en: "4M+" },
+      unit: { ru: "просмотров", en: "views" },
+    },
     task: {
       ru: "Клинике нужны были охваты, узнаваемость в Дубае и новые заявки.",
       en: "The clinic needed reach, recognition in Dubai and new inquiries.",
@@ -60,13 +71,20 @@ export const WORKS = [
       ru: "Ролик с разбором набрал 4 миллиона просмотров. Только с этого видео пришло 5 000 новых подписчиков.",
       en: "A single breakdown reel hit 4 million views. That one video alone brought 5,000 new followers.",
     },
+    videos: [
+      { src: "media/videos/work2-1.mp4", poster: null },
+      { src: null, poster: null },
+      { src: null, poster: null },
+    ],
   },
   {
     id: "work-3",
-    src: null,
-    poster: null,
     brand: { ru: "Клиника эстетической медицины", en: "Aesthetic medicine clinic" },
     niche: { ru: "Бьюти · Дубай", en: "Beauty · Dubai" },
+    metric: {
+      num: { ru: "×3", en: "×3" },
+      unit: { ru: "аудитория", en: "audience" },
+    },
     task: {
       ru: "Нестабильный поток пациентов. Нужен был контент, который будет стабильно привлекать людей.",
       en: "An unstable flow of patients. They needed content that would steadily attract people.",
@@ -79,13 +97,20 @@ export const WORKS = [
       ru: "Аудитория клиники выросла в три раза (с 3 до 11+ тысяч). Instagram стал стабильным источником лидов на процедуры.",
       en: "The clinic's audience tripled (from 3,000 to 11,000+). Instagram became a steady source of leads for procedures.",
     },
+    videos: [
+      { src: "media/videos/work3-1.mp4", poster: null },
+      { src: "media/videos/work3-2.mp4", poster: null },
+      { src: "media/videos/work3-3.mp4", poster: null },
+    ],
   },
   {
     id: "work-4",
-    src: null,
-    poster: null,
     brand: { ru: "Автоподбор", en: "Car sourcing" },
     niche: { ru: "Авто · Дубай", en: "Auto · Dubai" },
+    metric: {
+      num: { ru: "600 000+", en: "600K+" },
+      unit: { ru: "просмотров", en: "views" },
+    },
     task: {
       ru: "Эксперт уже снимал видео сам, но упирался в потолок просмотров в своей узкой нише.",
       en: "The expert already shot videos himself but kept hitting a view ceiling in his narrow niche.",
@@ -95,18 +120,19 @@ export const WORKS = [
       en: "We agreed on five test reels. We sharpened the delivery, added live process (garages, inspections, deals) and brought in aggressive, fast-paced editing to hold attention.",
     },
     result: {
-      ru: "Из пяти тестовых рилсов два узкоспециализированных ролика залетели на 500 000 и 200 000 просмотров. Эксперт забрал формат в постоянную работу.",
-      en: "Out of five test reels, two highly specialized ones took off to 500,000 and 200,000 views. The expert took the format into ongoing work.",
+      ru: "Из пяти тестовых рилсов ролики залетели на сотни тысяч просмотров. Эксперт забрал формат в постоянную работу.",
+      en: "Out of five test reels, videos took off to hundreds of thousands of views. The expert took the format into ongoing work.",
     },
+    videos: [
+      { src: "media/videos/work4-1.mp4", poster: null },
+      { src: "media/videos/work4-2.mp4", poster: null },
+      { src: null, poster: null },
+    ],
   },
 ];
 
-// Отзывы. Два режима на выбор для каждого:
-//   1) СКРИН переписки — положи картинку в media/reviews/ и укажи img.
-//      Это самый честный вариант: живую переписку не подделаешь.
-//   2) ТЕКСТ — если скрина нет, оставь img: null и заполни quote/name.
-// tag — что именно делали для человека (продюсирование / съёмка / монтаж).
-// Так честно: видно, что не у всех было полное ведение.
+// Отзывы. Скрин переписки (img) или текст (quote). tag — что делали.
+// Секция сама прячется, пока нет ни одного реального отзыва.
 export const REVIEWS = [
   {
     id: "review-1",
@@ -131,13 +157,12 @@ export const REVIEWS = [
   },
 ];
 
-// Витрина роликов. tag: подпись слева; metric: бейдж просмотров.
-// Бейдж опционален: залетел ролик — ставим цифру, просто красивый — оставляем пустым.
+// Витрина роликов. tag: подпись; metric: бейдж просмотров (только у реальных видео).
 export const SHOWCASE = [
-  { id: "showcase-1", src: null, poster: null, tag: { ru: "Лайфстайл", en: "Lifestyle" }, metric: { ru: "+100к подписчиков", en: "+100K followers" } },
-  { id: "showcase-2", src: null, poster: null, tag: { ru: "Медицина", en: "Medical" }, metric: { ru: "4 млн", en: "4M" } },
-  { id: "showcase-3", src: null, poster: null, tag: { ru: "Авто", en: "Auto" }, metric: { ru: "500 тыс", en: "500K" } },
+  { id: "showcase-1", src: "media/videos/show-expert.mp4", poster: null, tag: { ru: "Эксперт", en: "Expert" }, metric: { ru: "", en: "" } },
+  { id: "showcase-2", src: "media/videos/show-reel1.mp4", poster: null, tag: { ru: "Лайфстайл", en: "Lifestyle" }, metric: { ru: "", en: "" } },
+  { id: "showcase-3", src: "media/videos/show-event.mp4", poster: null, tag: { ru: "Ивент", en: "Event" }, metric: { ru: "", en: "" } },
   { id: "showcase-4", src: null, poster: null, tag: { ru: "Бьюти", en: "Beauty" }, metric: { ru: "", en: "" } },
-  { id: "showcase-5", src: null, poster: null, tag: { ru: "Авто", en: "Auto" }, metric: { ru: "300 тыс", en: "300K" } },
-  { id: "showcase-6", src: null, poster: null, tag: { ru: "Эксперт", en: "Expert" }, metric: { ru: "", en: "" } },
+  { id: "showcase-5", src: null, poster: null, tag: { ru: "Авто", en: "Auto" }, metric: { ru: "", en: "" } },
+  { id: "showcase-6", src: null, poster: null, tag: { ru: "Медицина", en: "Medical" }, metric: { ru: "", en: "" } },
 ];

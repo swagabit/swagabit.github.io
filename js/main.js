@@ -30,6 +30,12 @@ function renderReels() {
   WORKS.forEach((w) => {
     const card = document.createElement("article");
     card.className = "case-card reveal in";
+
+    const num = document.createElement("div");
+    num.className = "case-num";
+    num.setAttribute("aria-hidden", "true");
+    num.innerHTML = `<b class="display">${w.metric.num[lang]}</b><span>${w.metric.unit[lang]}</span>`;
+
     const info = document.createElement("div");
     info.className = "case-info";
     info.innerHTML = `
@@ -47,8 +53,14 @@ function renderReels() {
         <h4>${DICT[lang]["works.result"]}</h4>
         <p>${w.result[lang]}</p>
       </div>`;
-    card.appendChild(createReel(w, lang, { meta: `<b>${w.brand[lang]}</b>` }));
+
+    const reels = document.createElement("div");
+    reels.className = "case-reels";
+    w.videos.forEach((v) => reels.appendChild(createReel(v, lang, {})));
+
+    card.appendChild(num);
     card.appendChild(info);
+    card.appendChild(reels);
     worksList.appendChild(card);
   });
 

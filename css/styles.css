@@ -179,6 +179,22 @@ nav {
   display: grid; place-items: center;
 }
 .reel-tap.hidden { display: none; }
+.reel-tap .reel-play { transition: opacity 0.25s; }
+.reel-tap.playing .reel-play { opacity: 0; }
+/* индикатор звука: mute по умолчанию, акцент при включённом звуке */
+.reel-sound {
+  position: absolute; top: 10px; right: 10px; z-index: 3;
+  width: 30px; height: 30px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  color: #fff; pointer-events: none;
+  transition: background 0.25s;
+}
+.reel-sound svg { width: 15px; height: 15px; display: block; }
+.reel-sound.is-muted .ic-on { display: none; }
+.reel-sound:not(.is-muted) .ic-off { display: none; }
+.reel-sound:not(.is-muted) { background: var(--accent); }
 .reel-meta {
   position: absolute; left: 16px; right: 16px; bottom: 14px; z-index: 1;
   display: flex; justify-content: space-between; align-items: center; font-size: 13px;
@@ -233,18 +249,45 @@ nav {
 
 /* ---------- CASES ---------- */
 .case-card {
-  display: grid; grid-template-columns: 320px 1fr;
-  gap: clamp(28px, 4vw, 64px);
+  position: relative; overflow: hidden;
   background:
     radial-gradient(ellipse 55% 60% at 92% 0%, rgba(61, 90, 241, 0.055), transparent 60%),
     var(--bg-soft);
   border: 1px solid var(--line);
   border-radius: 20px;
   padding: clamp(24px, 3vw, 44px);
-  align-items: center;
 }
-.case-card + .case-card { margin-top: 32px; }
+.case-card + .case-card { margin-top: 24px; }
+
+/* огромная призрачная цифра-текстура в правом верхнем углу */
+.case-num {
+  position: absolute; top: clamp(6px, 1.4vw, 20px); right: clamp(14px, 2.4vw, 40px);
+  z-index: 0; text-align: right; pointer-events: none; user-select: none;
+}
+.case-num b {
+  display: block;
+  font-family: "Unbounded", sans-serif; font-weight: 700;
+  font-size: clamp(54px, 11vw, 168px); line-height: 0.82; letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.035);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
+}
+.case-num span {
+  display: block; margin-top: 8px;
+  font-size: clamp(10px, 0.95vw, 13px); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.07);
+}
+
+.case-info { position: relative; z-index: 1; max-width: 64ch; }
 .case-info h3 { font-size: clamp(20px, 2vw, 28px); font-weight: 600; margin-bottom: 6px; }
+
+/* галерея из трёх роликов */
+.case-reels {
+  position: relative; z-index: 1;
+  margin-top: clamp(24px, 3vw, 36px);
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(10px, 1.4vw, 18px);
+  max-width: 680px;
+}
 .case-niche { color: var(--accent); font-weight: 600; font-size: 14px; margin-bottom: 24px; }
 .work-block + .work-block { margin-top: 20px; }
 .work-block h4 {
@@ -583,8 +626,8 @@ footer { border-top: 1px solid var(--line); }
   .hero-grid { grid-template-columns: 1fr; padding-top: 44px; padding-bottom: 56px; }
   .hero-reel { justify-self: start; max-width: 265px; }
   .hero-badge { right: auto; left: -8px; }
-  .case-card { grid-template-columns: 1fr; }
-  .case-card .reel { max-width: 250px; }
+  .case-reels { max-width: none; gap: 8px; }
+  .case-num b { font-size: clamp(44px, 16vw, 90px); }
   .showcase-grid { grid-template-columns: repeat(2, 1fr); }
   .showcase-cell:nth-child(even) { transform: translateY(18px); }
   .proof-grid { grid-template-columns: 1fr; gap: 20px; }
