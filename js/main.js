@@ -52,9 +52,16 @@ function renderReels() {
     worksList.appendChild(card);
   });
 
+  // Показываем отзыв, только если он реальный: есть скрин (img)
+  // или текст, отличный от заглушки. Пустые заглушки бьют по доверию,
+  // поэтому пока реальных нет — прячем всю секцию целиком.
+  const placeholderQuotes = new Set(["Здесь будет отзыв клиента", "Client review goes here"]);
+  const realReviews = REVIEWS.filter((r) => r.img || (r.quote && !placeholderQuotes.has(r.quote.ru)));
+  const revSection = document.getElementById("reviews");
+  if (revSection) revSection.classList.toggle("hidden", realReviews.length === 0);
   const revGrid = document.getElementById("reviews-grid");
   revGrid.innerHTML = "";
-  REVIEWS.forEach((r) => {
+  realReviews.forEach((r) => {
     const card = document.createElement("figure");
     card.className = "review-card reveal in";
     // Есть скрин переписки — показываем его; нет — показываем текст.

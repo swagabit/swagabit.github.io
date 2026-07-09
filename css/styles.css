@@ -67,7 +67,7 @@ nav {
 .lang-toggle button {
   background: none; border: none; color: var(--muted);
   font: 700 12px/1 "Manrope", sans-serif; letter-spacing: 0.06em;
-  padding: 9px 13px; cursor: pointer; transition: color 0.2s, background 0.2s;
+  padding: 12px 15px; cursor: pointer; transition: color 0.2s, background 0.2s;
 }
 .lang-toggle button.active { background: var(--text); color: #0b0b0d; }
 .nav-cta {
@@ -203,6 +203,25 @@ nav {
 @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
 
+/* ---------- HERO NOTE (реассуранс под кнопкой) ---------- */
+.hero-note { margin-top: 18px; color: var(--muted); font-size: 14px; font-weight: 500; }
+
+/* ---------- PROOF (полоса доказательств) ---------- */
+.proof { border-bottom: 1px solid var(--line); }
+.proof-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 3vw, 40px);
+  padding: clamp(28px, 4vw, 44px) 0;
+}
+.proof-item { display: flex; flex-direction: column; gap: 6px; }
+.proof-item + .proof-item { position: relative; }
+.proof-item b {
+  font-family: "Unbounded", sans-serif; font-weight: 600;
+  font-size: clamp(26px, 4vw, 46px); line-height: 1; color: var(--accent);
+  letter-spacing: -0.01em;
+}
+.proof-item span { color: var(--muted); font-size: clamp(13px, 1.2vw, 15px); font-weight: 500; max-width: 26ch; }
+
 /* ---------- SECTIONS ---------- */
 .section { padding: clamp(72px, 9vw, 130px) 0; }
 .section-title {
@@ -309,7 +328,7 @@ nav {
   position: relative; overflow: hidden;
 }
 .why-card:first-child { background: var(--accent); border-color: transparent; }
-.why-card:first-child p { color: rgba(255, 255, 255, 0.8); }
+.why-card:first-child p { color: #fff; }
 .why-card:first-child i { color: rgba(255, 255, 255, 0.35); }
 .why-card i {
   font-style: normal; font-family: "Unbounded", sans-serif;
@@ -568,6 +587,7 @@ footer { border-top: 1px solid var(--line); }
   .case-card .reel { max-width: 250px; }
   .showcase-grid { grid-template-columns: repeat(2, 1fr); }
   .showcase-cell:nth-child(even) { transform: translateY(18px); }
+  .proof-grid { grid-template-columns: 1fr; gap: 20px; }
   .reviews-grid { grid-template-columns: 1fr; }
   .why-grid { grid-template-columns: 1fr; }
   .aud-tabs { grid-template-columns: 1fr; }
