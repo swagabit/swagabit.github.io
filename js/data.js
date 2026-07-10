@@ -46,9 +46,9 @@ export const WORKS = [
       en: "The character clicked with the audience and the reels broke through the algorithm. The blog grew by 100,000 followers without a cent spent on traffic.",
     },
     videos: [
-      { src: null, poster: null },
-      { src: null, poster: null },
-      { src: null, poster: null },
+      { src: "media/videos/lb1.mp4", poster: null },
+      { src: "media/videos/lb2.mp4", poster: null },
+      { src: "media/videos/lb3.mp4", poster: null },
     ],
   },
   {
@@ -98,9 +98,9 @@ export const WORKS = [
       en: "The clinic's audience tripled (from 3,000 to 11,000+). Instagram became a steady source of leads for procedures.",
     },
     videos: [
-      { src: null, poster: null },
-      { src: null, poster: null },
-      { src: null, poster: null },
+      { src: "media/videos/med1.mp4", poster: null },
+      { src: "media/videos/med2.mp4", poster: null },
+      { src: "media/videos/med3.mp4", poster: null },
     ],
   },
   {
@@ -161,8 +161,8 @@ export const REVIEWS = [
 export const SHOWCASE = [
   { id: "showcase-1", src: "media/videos/showreel.mp4", poster: null, tag: { ru: "Эксперт", en: "Expert" }, metric: { ru: "", en: "" } },
   { id: "showcase-2", src: "media/videos/work3-2.mp4", poster: null, tag: { ru: "Бьюти", en: "Beauty" }, metric: { ru: "", en: "" } },
-  { id: "showcase-3", src: "media/videos/show-reel1.mp4", poster: null, tag: { ru: "Лайфстайл", en: "Lifestyle" }, metric: { ru: "", en: "" } },
+  { id: "showcase-3", src: "media/videos/show-lifestyle.mp4", poster: null, tag: { ru: "Лайфстайл", en: "Lifestyle" }, metric: { ru: "", en: "" } },
   { id: "showcase-4", src: "media/videos/show-event.mp4", poster: null, tag: { ru: "Ивент", en: "Event" }, metric: { ru: "", en: "" } },
-  { id: "showcase-5", src: null, poster: null, tag: { ru: "Авто", en: "Auto" }, metric: { ru: "", en: "" } },
-  { id: "showcase-6", src: null, poster: null, tag: { ru: "Медицина", en: "Medical" }, metric: { ru: "", en: "" } },
+  { id: "showcase-5", src: "media/videos/show-reel1.mp4", poster: null, tag: { ru: "Авто", en: "Auto" }, metric: { ru: "", en: "" } },
+  { id: "showcase-6", src: "media/videos/show-med.mp4", poster: null, tag: { ru: "Медицина", en: "Medical" }, metric: { ru: "", en: "" } },
 ];
