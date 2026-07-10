@@ -556,7 +556,7 @@ nav {
   display: grid; place-items: center;
 }
 .photo-ph span { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-.about-img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center; border-radius: 20px; border: 1px solid var(--line); }
+.about-img { display: block; width: 100%; height: auto; border-radius: 20px; border: 1px solid var(--line); }
 .about-copy .section-title { margin-bottom: 24px; }
 .about-copy p { color: var(--muted); max-width: 56ch; margin-bottom: 18px; font-size: clamp(15.5px, 1.3vw, 17px); }
 .about-ig {
@@ -646,7 +646,7 @@ footer { border-top: 1px solid var(--line); }
   .srv-footer .btn-primary { width: 100%; justify-content: center; }
   .proc-list li { grid-template-columns: 48px 1fr; }
   .about-grid { grid-template-columns: 1fr; }
-  .about-photo { max-width: 300px; }
+  .about-photo { max-width: 460px; }
   .sticky-cta { display: block; }
   footer .footer-inner { padding-bottom: 96px; }
 }
