@@ -181,11 +181,6 @@ nav {
 .reel-tap.hidden { display: none; }
 .reel-tap .reel-play { transition: opacity 0.25s; }
 .reel-tap.playing .reel-play { opacity: 0; }
-/* запущенный клик-плеер: прячем оверлей и подпись, чтобы работали системные кнопки */
-.reel.playing .reel-tap { opacity: 0; pointer-events: none; }
-.reel.playing .reel-meta { opacity: 0; }
-.reel video { z-index: 1; }
-.reel video::-webkit-media-controls { z-index: 4; }
 /* индикатор звука: mute по умолчанию, акцент при включённом звуке */
 .reel-sound {
   position: absolute; top: 10px; right: 10px; z-index: 3;
