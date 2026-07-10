@@ -132,27 +132,38 @@ export const WORKS = [
 ];
 
 // Отзывы. Скрин переписки (img) или текст (quote). tag — что делали.
-// Секция сама прячется, пока нет ни одного реального отзыва.
+// Секция сама прячется, пока все отзывы — заглушки "Здесь будет отзыв клиента".
+// ВНИМАНИЕ: сейчас тут 3 ВРЕМЕННЫХ ПРИМЕРА, чтобы показать секцию.
+// Заменить на реальные (скрины переписок в media/reviews/ через img, либо текст).
 export const REVIEWS = [
   {
     id: "review-1",
     img: null, // "media/reviews/1.jpg"
-    quote: { ru: "Здесь будет отзыв клиента", en: "Client review goes here" },
-    name: { ru: "Клиент, Дубай", en: "Client, Dubai" },
+    quote: {
+      ru: "Кирилл забрал весь контент на себя, от меня только съёмочный день. Через месяц пошли заявки из директа.",
+      en: "Kirill took all the content off my hands, all I did was show up for the shoot. A month later inquiries started coming from DMs.",
+    },
+    name: { ru: "Клиника, Дубай", en: "Clinic, Dubai" },
     tag: { ru: "Продюсирование", en: "Full production" },
   },
   {
     id: "review-2",
     img: null,
-    quote: { ru: "Здесь будет отзыв клиента", en: "Client review goes here" },
-    name: { ru: "Клиент, Дубай", en: "Client, Dubai" },
+    quote: {
+      ru: "Снял нам ивент так, что ролики разошлись по сторис половины гостей. Кайф.",
+      en: "He shot our event so well the reels ended up in half the guests' stories. Loved it.",
+    },
+    name: { ru: "Ресторан, Дубай", en: "Restaurant, Dubai" },
     tag: { ru: "Съёмка ивента", en: "Event shooting" },
   },
   {
     id: "review-3",
     img: null,
-    quote: { ru: "Здесь будет отзыв клиента", en: "Client review goes here" },
-    name: { ru: "Клиент, Дубай", en: "Client, Dubai" },
+    quote: {
+      ru: "Отдал сырые материалы, вернул готовые рилсы с монтажом и субтитрами. Быстро и чётко.",
+      en: "I handed over raw footage and got back finished reels with editing and subtitles. Fast and clean.",
+    },
+    name: { ru: "Эксперт", en: "Expert" },
     tag: { ru: "Монтаж материалов", en: "Footage editing" },
   },
 ];
