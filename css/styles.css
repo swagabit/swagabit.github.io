@@ -227,7 +227,9 @@ nav {
 .proof-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: clamp(16px, 3vw, 40px);
-  padding: clamp(28px, 4vw, 44px) 0;
+  /* только вертикальный отступ: горизонтальный берётся из .wrap, иначе на мобиле липнет к краю */
+  padding-top: clamp(28px, 4vw, 44px);
+  padding-bottom: clamp(28px, 4vw, 44px);
 }
 .proof-item { display: flex; flex-direction: column; gap: 6px; }
 .proof-item + .proof-item { position: relative; }
@@ -632,6 +634,7 @@ footer { border-top: 1px solid var(--line); }
   .showcase-grid { grid-template-columns: repeat(2, 1fr); }
   .showcase-cell:nth-child(even) { transform: translateY(18px); }
   .proof-grid { grid-template-columns: 1fr; gap: 20px; }
+  .srv-badge { position: static; display: inline-block; margin-bottom: 14px; }
   .reviews-grid { grid-template-columns: 1fr; }
   .why-grid { grid-template-columns: 1fr; }
   .aud-tabs { grid-template-columns: 1fr; }
