@@ -6,3 +6,7 @@
 /*.mov
 /*.MOV
 /*.m4v
+
+# исходное фото в корне (в деплой идёт media/photos/about.jpg)
+/*.png
+/*.PNG
