@@ -1,16 +1,14 @@
-// Видео-движок: ленивый автоплей 9:16 роликов + звук по клику.
-//   src === null -> премиальная заглушка «здесь будет видео».
-//   src задан    -> <video muted loop playsinline>, автоплей без звука в зоне
-//                   видимости. Клик по кадру включает звук (и глушит остальные),
-//                   повторный клик — выключает. Уход из зоны видимости — пауза + mute.
+// Видео-движок. Два режима:
+//   autoplay (шоурил): превью без звука по кругу; клик по кадру включает/выключает звук.
+//   click-to-play (все остальные): постер + кнопка play, БЕЗ автоплея. Клик запускает
+//     ролик с самого начала, со звуком и системным плеером (перемотка). Остальные при
+//     этом останавливаются и сбрасываются в начало.
 
 import { DICT } from "./i18n.js";
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const saveData = navigator.connection && navigator.connection.saveData;
 const autoplayAllowed = !reduceMotion && !saveData;
-const MAX_PLAYING = 4;
-const playing = new Set();
 const controllers = new Set();
 
 function playIcon() {
@@ -24,6 +22,7 @@ function soundIcons() {
 }
 
 export function createReel(entry, lang, opts = {}) {
+  const autoplay = !!opts.autoplay;
   const frame = document.createElement("div");
   frame.className = "reel" + (opts.className ? " " + opts.className : "");
 
@@ -33,64 +32,91 @@ export function createReel(entry, lang, opts = {}) {
         ${playIcon()}
         <span data-i18n="reel.soon">${DICT[lang]["reel.soon"]}</span>
       </div>`;
-  } else {
-    const video = document.createElement("video");
-    video.muted = true;
-    video.loop = true;
-    video.playsInline = true;
-    video.setAttribute("muted", "");
-    video.setAttribute("playsinline", "");
-    video.preload = "none";
-    // постер: явный из data.js либо автоматически из имени видео
-    // (media/videos/x.mp4 -> media/posters/x.jpg). Показывает стоп-кадр
-    // сразу, даже если автоплей заблокирован.
-    const poster = entry.poster || entry.src.replace("/videos/", "/posters/").replace(/\.mp4$/, ".jpg");
-    if (poster) video.poster = poster;
-    video.dataset.src = entry.src;
-    frame.appendChild(video);
+    if (opts.meta) appendMeta(frame, opts.meta);
+    return frame;
+  }
 
+  const video = document.createElement("video");
+  video.muted = true;
+  video.loop = autoplay; // превью крутится по кругу, полноценный просмотр — один раз
+  video.playsInline = true;
+  video.setAttribute("muted", "");
+  video.setAttribute("playsinline", "");
+  video.preload = "none";
+  // постер: явный из data.js либо из имени видео (videos/x.mp4 -> posters/x.jpg)
+  const poster = entry.poster || entry.src.replace("/videos/", "/posters/").replace(/\.mp4$/, ".jpg");
+  if (poster) video.poster = poster;
+  video.dataset.src = entry.src;
+  frame.appendChild(video);
+
+  const tap = document.createElement("button");
+  tap.className = "reel-tap";
+  tap.innerHTML = playIcon();
+  frame.appendChild(tap);
+
+  const ctrl = { video, tap, frame, autoplay };
+
+  if (autoplay) {
+    // ----- превью со звуком по клику -----
     const sound = document.createElement("div");
     sound.className = "reel-sound is-muted";
     sound.setAttribute("aria-hidden", "true");
     sound.innerHTML = soundIcons();
     frame.appendChild(sound);
-
-    const tap = document.createElement("button");
-    tap.className = "reel-tap";
     tap.setAttribute("aria-label", DICT[lang]["reel.sound"] || "Звук");
-    tap.innerHTML = playIcon();
-    frame.appendChild(tap);
 
-    const ctrl = { video, tap };
-    ctrl.setMuted = (m) => {
-      video.muted = m;
-      sound.classList.toggle("is-muted", m);
-    };
-    controllers.add(ctrl);
-    frame._ctrl = ctrl;
+    ctrl.setMuted = (m) => { video.muted = m; sound.classList.toggle("is-muted", m); };
+    ctrl.reset = () => { ctrl.setMuted(true); };
 
     tap.addEventListener("click", () => {
       ensureSrc(video);
       tap.classList.add("playing");
       if (video.muted) {
-        controllers.forEach((c) => { if (c !== ctrl) c.setMuted(true); });
+        controllers.forEach((c) => { if (c !== ctrl) c.reset(); });
         ctrl.setMuted(false);
       } else {
         ctrl.setMuted(true);
       }
       video.play().catch(() => {});
     });
+  } else {
+    // ----- клик = запуск с начала, со звуком, системный плеер -----
+    tap.setAttribute("aria-label", DICT[lang]["reel.play"] || "Смотреть");
 
-    observe(frame);
+    ctrl.reset = () => {
+      video.pause();
+      try { video.currentTime = 0; } catch (e) {}
+      video.muted = true;
+      video.controls = false;
+      frame.classList.remove("playing");
+      tap.classList.remove("playing");
+    };
+
+    tap.addEventListener("click", () => {
+      controllers.forEach((c) => { if (c !== ctrl) c.reset(); });
+      ensureSrc(video);
+      try { video.currentTime = 0; } catch (e) {}
+      video.muted = false;
+      video.controls = true;
+      frame.classList.add("playing");
+      tap.classList.add("playing");
+      video.play().catch(() => {});
+    });
   }
 
-  if (opts.meta) {
-    const meta = document.createElement("div");
-    meta.className = "reel-meta";
-    meta.innerHTML = opts.meta;
-    frame.appendChild(meta);
-  }
+  controllers.add(ctrl);
+  frame._ctrl = ctrl;
+  observe(frame);
+
+  if (opts.meta) appendMeta(frame, opts.meta);
   return frame;
+}
+
+function appendMeta(frame, html) {
+  const meta = document.createElement("div");
+  meta.className = "reel-meta";
+  meta.innerHTML = html;
+  frame.appendChild(meta);
 }
 
 function ensureSrc(video) {
@@ -109,23 +135,18 @@ function onIntersect(entries) {
   for (const e of entries) {
     const ctrl = e.target._ctrl;
     if (!ctrl) continue;
-    const { video, tap } = ctrl;
+    const { video, tap, autoplay } = ctrl;
     if (e.isIntersecting) {
       ensureSrc(video);
-      if (autoplayAllowed && e.intersectionRatio >= 0.25 && playing.size < MAX_PLAYING) {
+      if (autoplay && autoplayAllowed && e.intersectionRatio >= 0.25) {
         ctrl.setMuted(true);
-        video.play().then(() => {
-          playing.add(video);
-          tap.classList.add("playing");
-        }).catch(() => {
-          // iOS Low Power Mode и т.п.: остаётся кнопка воспроизведения
-          tap.classList.remove("playing");
-        });
+        video.play().then(() => tap.classList.add("playing")).catch(() => tap.classList.remove("playing"));
       }
     } else {
+      // ушёл из зоны видимости — останавливаем (клик-ролики сбрасываем в начало)
       if (!video.paused) video.pause();
-      ctrl.setMuted(true); // вернётся в кадр без звука
-      playing.delete(video);
+      if (autoplay) ctrl.reset();
+      else ctrl.reset();
     }
   }
 }

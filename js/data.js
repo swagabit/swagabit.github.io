@@ -17,8 +17,8 @@ export const CONTACTS = {
 
 export const SHOWREEL = {
   id: "showreel",
-  src: "media/videos/showreel.mp4",
-  poster: null, // например: "media/posters/showreel.jpg"
+  src: "media/videos/show-expert.mp4", // поменян местами с плиткой «Эксперт» в витрине
+  poster: null,
 };
 
 // Разборы работ. У каждого: фоновая цифра (metric) + до 3 роликов (videos).
@@ -73,8 +73,8 @@ export const WORKS = [
     },
     videos: [
       { src: "media/videos/work2-1.mp4", poster: null },
-      { src: null, poster: null },
-      { src: null, poster: null },
+      { src: "media/videos/work3-1.mp4", poster: null },
+      { src: "media/videos/work3-3.mp4", poster: null },
     ],
   },
   {
@@ -98,9 +98,9 @@ export const WORKS = [
       en: "The clinic's audience tripled (from 3,000 to 11,000+). Instagram became a steady source of leads for procedures.",
     },
     videos: [
-      { src: "media/videos/work3-1.mp4", poster: null },
-      { src: "media/videos/work3-2.mp4", poster: null },
-      { src: "media/videos/work3-3.mp4", poster: null },
+      { src: null, poster: null },
+      { src: null, poster: null },
+      { src: null, poster: null },
     ],
   },
   {
@@ -126,7 +126,7 @@ export const WORKS = [
     videos: [
       { src: "media/videos/work4-1.mp4", poster: null },
       { src: "media/videos/work4-2.mp4", poster: null },
-      { src: null, poster: null },
+      { src: "media/videos/work4-3.mp4", poster: null },
     ],
   },
 ];
@@ -159,10 +159,10 @@ export const REVIEWS = [
 
 // Витрина роликов. tag: подпись; metric: бейдж просмотров (только у реальных видео).
 export const SHOWCASE = [
-  { id: "showcase-1", src: "media/videos/show-expert.mp4", poster: null, tag: { ru: "Эксперт", en: "Expert" }, metric: { ru: "", en: "" } },
-  { id: "showcase-2", src: "media/videos/show-reel1.mp4", poster: null, tag: { ru: "Лайфстайл", en: "Lifestyle" }, metric: { ru: "", en: "" } },
-  { id: "showcase-3", src: "media/videos/show-event.mp4", poster: null, tag: { ru: "Ивент", en: "Event" }, metric: { ru: "", en: "" } },
-  { id: "showcase-4", src: null, poster: null, tag: { ru: "Бьюти", en: "Beauty" }, metric: { ru: "", en: "" } },
+  { id: "showcase-1", src: "media/videos/showreel.mp4", poster: null, tag: { ru: "Эксперт", en: "Expert" }, metric: { ru: "", en: "" } },
+  { id: "showcase-2", src: "media/videos/work3-2.mp4", poster: null, tag: { ru: "Бьюти", en: "Beauty" }, metric: { ru: "", en: "" } },
+  { id: "showcase-3", src: "media/videos/show-reel1.mp4", poster: null, tag: { ru: "Лайфстайл", en: "Lifestyle" }, metric: { ru: "", en: "" } },
+  { id: "showcase-4", src: "media/videos/show-event.mp4", poster: null, tag: { ru: "Ивент", en: "Event" }, metric: { ru: "", en: "" } },
   { id: "showcase-5", src: null, poster: null, tag: { ru: "Авто", en: "Auto" }, metric: { ru: "", en: "" } },
   { id: "showcase-6", src: null, poster: null, tag: { ru: "Медицина", en: "Medical" }, metric: { ru: "", en: "" } },
 ];

@@ -19,11 +19,7 @@ function wireContacts() {
 function renderReels() {
   const heroWrap = document.getElementById("hero-reel");
   heroWrap.querySelectorAll(".reel").forEach((n) => n.remove());
-  heroWrap.appendChild(
-    createReel(SHOWREEL, lang, {
-      meta: `<b>${DICT[lang]["reel.showreel"]}</b>`,
-    })
-  );
+  heroWrap.appendChild(createReel(SHOWREEL, lang, { autoplay: true }));
 
   const worksList = document.getElementById("works-list");
   worksList.innerHTML = "";
