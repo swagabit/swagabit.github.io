@@ -210,14 +210,14 @@ function initWaves() {
       for (let y = 0; y <= h; y += 8) {
         const k = y / h;
         const x = baseX
-          + Math.sin(k * 3.2 + phase + t) * 16
-          + Math.sin(k * 6.1 - phase * 0.6 + t * 0.7) * 9;
+          + Math.sin(k * 3.2 + phase + t) * 20
+          + Math.sin(k * 6.1 - phase * 0.6 + t * 0.7) * 11;
         y === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
       }
       // лёгкий оранжево-синий отлив по ширине, как во всей палитре
       const mix = i / lines;
       const r = Math.round(232 - mix * 60), g = Math.round(68 + mix * 20), b = Math.round(46 + mix * 180);
-      ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, 0.16)`;
+      ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, 0.34)`;
       ctx.stroke();
     }
   };
