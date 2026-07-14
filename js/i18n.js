@@ -3,6 +3,7 @@ export const DICT = {
   ru: {
     "meta.title": "Кирилл Таранов · рилс-продюсер",
     "meta.desc": "Продюсирую вертикальные видео для бизнеса и экспертов: от идеи до финального результата.",
+    "logo.name": "ТАРАНОВ",
     "nav.works": "Работы",
     "nav.services": "Услуги",
     "nav.about": "Обо мне",
@@ -161,6 +162,7 @@ export const DICT = {
   en: {
     "meta.title": "Kirill Taranov · reels producer",
     "meta.desc": "I produce vertical video for businesses and experts, from the first idea to the finished reel.",
+    "logo.name": "TARANOV",
     "nav.works": "Work",
     "nav.services": "Services",
     "nav.about": "About",
