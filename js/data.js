@@ -11,6 +11,11 @@ export const CONTACTS = {
     ru: "Привет! Пишу с сайта, хочу обсудить проект.",
     en: "Hi! Found you through the website. I'd like to discuss a project.",
   },
+  // отдельный текст для кнопки «бесплатный разбор профиля»
+  whatsappAuditText: {
+    ru: "Привет! Пишу с сайта, хочу бесплатный разбор профиля. Вот ссылка: ",
+    en: "Hi! Found you through the website, I'd like the free profile review. Here's the link: ",
+  },
   telegram: "https://t.me/taranov4",
   instagram: "https://instagram.com/swagaeb",
 };

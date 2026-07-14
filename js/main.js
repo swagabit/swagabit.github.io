@@ -7,9 +7,11 @@ let lang = getLang();
 // ---------- контакты ----------
 function wireContacts() {
   const wa = `https://wa.me/${CONTACTS.whatsappNumber}?text=${encodeURIComponent(CONTACTS.whatsappText[lang])}`;
+  const waAudit = `https://wa.me/${CONTACTS.whatsappNumber}?text=${encodeURIComponent(CONTACTS.whatsappAuditText[lang])}`;
   document.querySelectorAll("[data-contact]").forEach((a) => {
     const kind = a.getAttribute("data-contact");
     if (kind === "whatsapp") a.href = wa;
+    else if (kind === "whatsapp-audit") a.href = waAudit;
     else if (CONTACTS[kind]) a.href = CONTACTS[kind];
     if (kind !== "instagram") a.removeAttribute("target");
   });
@@ -25,7 +27,7 @@ function renderReels() {
   worksList.innerHTML = "";
   WORKS.forEach((w) => {
     const card = document.createElement("article");
-    card.className = "case-card reveal in";
+    card.className = "case-card reveal";
 
     const num = document.createElement("div");
     num.className = "case-num";
@@ -58,6 +60,7 @@ function renderReels() {
     card.appendChild(info);
     card.appendChild(reels);
     worksList.appendChild(card);
+    revealIO.observe(card);
   });
 
   // Показываем отзыв, только если он реальный: есть скрин (img)
@@ -71,7 +74,7 @@ function renderReels() {
   revGrid.innerHTML = "";
   realReviews.forEach((r) => {
     const card = document.createElement("figure");
-    card.className = "review-card reveal in";
+    card.className = "review-card reveal";
     // Есть скрин переписки — показываем его; нет — показываем текст.
     if (r.img) {
       card.classList.add("has-shot");
@@ -84,18 +87,20 @@ function renderReels() {
         <figcaption class="review-cap"><b>${r.name[lang]}</b><span>${r.tag[lang]}</span></figcaption>`;
     }
     revGrid.appendChild(card);
+    revealIO.observe(card);
   });
 
   const grid = document.getElementById("showcase-grid");
   grid.innerHTML = "";
   SHOWCASE.forEach((s) => {
     const cell = document.createElement("div");
-    cell.className = "showcase-cell reveal in";
+    cell.className = "showcase-cell reveal";
     // бейдж просмотров показываем только у реальных видео:
     // цифра рядом с заглушкой «здесь будет видео» выглядит как фейк
     const metric = s.src && s.metric[lang] ? `<i>${s.metric[lang]}</i>` : "";
     cell.appendChild(createReel(s, lang, { meta: `<b>${s.tag[lang]}</b>${metric}` }));
     grid.appendChild(cell);
+    revealIO.observe(cell);
   });
 }
 

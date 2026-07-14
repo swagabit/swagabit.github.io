@@ -43,10 +43,29 @@ body {
 .hidden { display: none !important; }
 
 /* появление секций */
-.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
-.reveal.in { opacity: 1; transform: none; }
+.reveal {
+  opacity: 0;
+  transform: translateY(30px) scale(0.985);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal.in { opacity: 1; transform: none; will-change: auto; }
+/* каскад: соседние карточки появляются друг за другом */
+.proof-grid > .reveal:nth-child(2), .why-grid > .reveal:nth-child(2),
+.srv-grid > .reveal:nth-child(2), .reviews-grid > .reveal:nth-child(2) { transition-delay: 0.09s; }
+.proof-grid > .reveal:nth-child(3), .why-grid > .reveal:nth-child(3),
+.reviews-grid > .reveal:nth-child(3) { transition-delay: 0.18s; }
+.why-grid > .reveal:nth-child(4) { transition-delay: 0.27s; }
+.showcase-grid > .reveal:nth-child(2) { transition-delay: 0.06s; }
+.showcase-grid > .reveal:nth-child(3) { transition-delay: 0.12s; }
+.showcase-grid > .reveal:nth-child(4) { transition-delay: 0.18s; }
+.showcase-grid > .reveal:nth-child(5) { transition-delay: 0.24s; }
+.showcase-grid > .reveal:nth-child(6) { transition-delay: 0.30s; }
+/* шаги процесса выезжают слева, по очереди */
+.proc-list li.reveal { transform: translateX(-24px); }
+.proc-list li.reveal.in { transform: none; }
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal, .proc-list li.reveal { opacity: 1; transform: none; transition: none; }
 }
 
 /* ---------- NAV ---------- */
@@ -241,7 +260,45 @@ nav {
 .proof-item span { color: var(--muted); font-size: clamp(13px, 1.2vw, 15px); font-weight: 500; max-width: 26ch; }
 
 /* ---------- SECTIONS ---------- */
-.section { padding: clamp(72px, 9vw, 130px) 0; }
+.section { padding: clamp(72px, 9vw, 130px) 0; position: relative; }
+/* контент всегда поверх световых полей */
+.section > .wrap { position: relative; z-index: 1; }
+
+/* ---------- СВЕТОВЫЕ ПОЛЯ (та самая текстура) ----------
+   у каждой секции своя позиция, чтобы не читалось как повтор */
+.proof::before, .works::before, .about::before, .audience::before,
+.process::before, .services::before, .faq::before, .offer::before {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+}
+.proof::before {
+  background: radial-gradient(ellipse 40% 70% at 88% 50%, rgba(61, 90, 241, 0.07), transparent 65%);
+}
+.works::before {
+  background:
+    radial-gradient(ellipse 50% 40% at 8% 6%, rgba(61, 90, 241, 0.07), transparent 65%),
+    radial-gradient(ellipse 45% 40% at 95% 92%, rgba(232, 68, 46, 0.05), transparent 65%);
+}
+.about::before {
+  background: radial-gradient(ellipse 45% 55% at 92% 30%, rgba(61, 90, 241, 0.07), transparent 65%);
+}
+.audience::before {
+  background:
+    radial-gradient(ellipse 45% 50% at 5% 15%, rgba(232, 68, 46, 0.06), transparent 65%),
+    radial-gradient(ellipse 40% 50% at 95% 85%, rgba(61, 90, 241, 0.06), transparent 65%);
+}
+.process::before {
+  background: radial-gradient(ellipse 40% 45% at 90% 12%, rgba(61, 90, 241, 0.07), transparent 65%);
+}
+.services::before {
+  background:
+    radial-gradient(ellipse 45% 45% at 10% 90%, rgba(61, 90, 241, 0.06), transparent 65%),
+    radial-gradient(ellipse 40% 40% at 92% 8%, rgba(232, 68, 46, 0.05), transparent 65%);
+}
+.faq::before {
+  background: radial-gradient(ellipse 40% 55% at 6% 50%, rgba(61, 90, 241, 0.06), transparent 65%);
+}
 .section-title {
   font-size: clamp(25px, 3vw, 42px);
   font-weight: 600; line-height: 1.15;
@@ -567,6 +624,45 @@ nav {
 }
 .about-ig:hover { color: var(--accent); }
 
+/* ---------- OFFER (бесплатный разбор) ---------- */
+.offer { border-top: 1px solid var(--line); }
+.offer::before {
+  background: radial-gradient(ellipse 55% 70% at 15% 20%, rgba(232, 68, 46, 0.10), transparent 65%);
+}
+.offer-card {
+  display: grid; grid-template-columns: 1.25fr 0.75fr;
+  gap: clamp(28px, 4vw, 64px); align-items: center;
+  background:
+    radial-gradient(ellipse 60% 90% at 95% 10%, rgba(61, 90, 241, 0.10), transparent 60%),
+    var(--bg-soft);
+  border: 1px solid rgba(232, 68, 46, 0.45);
+  border-radius: 24px;
+  padding: clamp(28px, 4vw, 56px);
+}
+.offer-badge {
+  display: inline-block; margin-bottom: 16px;
+  background: var(--accent); color: #fff;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 7px 14px; border-radius: 100px;
+}
+.offer-card h2 {
+  font-size: clamp(24px, 3vw, 40px); font-weight: 600; line-height: 1.15;
+  margin-bottom: 16px; max-width: 18ch;
+}
+.offer-copy > p { color: var(--muted); max-width: 52ch; margin-bottom: 28px; }
+.offer-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.offer-list li {
+  padding: 15px 0; border-bottom: 1px solid var(--line);
+  font-weight: 600; font-size: 15.5px;
+  display: flex; align-items: center; gap: 12px;
+}
+.offer-list li:last-child { border-bottom: none; }
+.offer-list li::before {
+  content: ""; flex: 0 0 auto;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent);
+}
+
 /* ---------- CONTACT ---------- */
 .contact { border-top: 1px solid var(--line); position: relative; }
 .contact::before {
@@ -641,6 +737,8 @@ footer { border-top: 1px solid var(--line); }
   .aud-panel { grid-template-columns: 1fr; }
   .srv-grid { grid-template-columns: 1fr; }
   .srv-mini { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .offer-card { grid-template-columns: 1fr; }
+  .offer-card .btn-primary { width: 100%; justify-content: center; }
   .contact-steps { flex-direction: column; gap: 12px; }
   .srv-footer { border-radius: 24px; padding: 20px 24px; }
   .srv-footer .btn-primary { width: 100%; justify-content: center; }
