@@ -180,6 +180,66 @@ function initTilt() {
   });
 }
 
+// Поле волнистых линий на фоне контактов.
+// Каждая линия вертикальная, её X гуляет по сумме синусов — получается «ткань».
+// Считаем только когда секция в кадре: за экраном анимация остановлена.
+function initWaves() {
+  const cv = document.getElementById("waves");
+  if (!cv) return;
+  const ctx = cv.getContext("2d");
+  let w = 0, h = 0, raf = null, t = 0, visible = false;
+
+  const resize = () => {
+    const r = cv.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = Math.max(1, Math.round(r.width));
+    h = Math.max(1, Math.round(r.height));
+    cv.width = w * dpr; cv.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  };
+
+  const draw = () => {
+    ctx.clearRect(0, 0, w, h);
+    const gap = 14;
+    const lines = Math.ceil(w / gap) + 1;
+    ctx.lineWidth = 1;
+    for (let i = 0; i < lines; i++) {
+      const baseX = i * gap;
+      const phase = i * 0.18;
+      ctx.beginPath();
+      for (let y = 0; y <= h; y += 8) {
+        const k = y / h;
+        const x = baseX
+          + Math.sin(k * 3.2 + phase + t) * 16
+          + Math.sin(k * 6.1 - phase * 0.6 + t * 0.7) * 9;
+        y === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      // лёгкий оранжево-синий отлив по ширине, как во всей палитре
+      const mix = i / lines;
+      const r = Math.round(232 - mix * 60), g = Math.round(68 + mix * 20), b = Math.round(46 + mix * 180);
+      ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, 0.16)`;
+      ctx.stroke();
+    }
+  };
+
+  const loop = () => {
+    t += noMotion ? 0 : 0.006;
+    draw();
+    raf = visible && !noMotion ? requestAnimationFrame(loop) : null;
+  };
+
+  const io = new IntersectionObserver((entries) => {
+    visible = entries[0].isIntersecting;
+    if (visible && !raf) loop();
+    else if (!visible && raf) { cancelAnimationFrame(raf); raf = null; }
+  }, { threshold: 0 });
+
+  resize();
+  draw();
+  io.observe(cv);
+  window.addEventListener("resize", () => { resize(); draw(); });
+}
+
 // ---------- язык ----------
 function setLang(next) {
   lang = next;
@@ -246,3 +306,4 @@ if (document.documentElement.getAttribute("data-lang-pending") === "en") {
   initCounters();
 }
 initSpotlight();
+initWaves();

@@ -52,6 +52,10 @@
 </nav>
 
 <header class="hero" id="top">
+  <div class="hero-shapes" aria-hidden="true">
+    <span class="shape-1"></span><span class="shape-2"></span><span class="shape-3"></span>
+    <span class="shape-4"></span><span class="shape-5"></span>
+  </div>
   <div class="dots" aria-hidden="true"></div>
   <div class="hero-spot" aria-hidden="true"></div>
   <div class="wrap hero-grid">
@@ -194,9 +198,12 @@
   <div class="wrap">
     <h2 class="section-title display reveal" data-i18n="srv.title">Форматы работы</h2>
     <div class="srv-grid">
+
       <div class="srv-card reveal">
         <h3 class="display" data-i18n="srv.1h">Поток роликов</h3>
         <p data-i18n="srv.1t">Регулярное производство: от идей до монтажа и публикации. Подойдёт тем, у кого уже настроены продажи и есть базовая упаковка.</p>
+        <a class="btn-ghost srv-cta" href="#" data-contact="whatsapp" data-i18n="srv.cta">Обсудить проект</a>
+        <h4 class="srv-inc" data-i18n="srv.1inc">Что входит:</h4>
         <ul>
           <li data-i18n="srv.1li1">Анализ ниши и конкурентов</li>
           <li data-i18n="srv.1li2">Стратегия и позиционирование</li>
@@ -210,12 +217,14 @@
           <li data-i18n="srv.1li10">Публикация и разбор метрик</li>
         </ul>
       </div>
+
       <div class="srv-card srv-featured reveal">
         <span class="srv-badge" data-i18n="srv.badge">популярный</span>
         <h3 class="display" data-i18n="srv.2h">Продюсирование под ключ</h3>
         <p data-i18n="srv.2t">Комплексная работа: полная упаковка профиля, ведение сторис с моей командой. Вам остаётся только повторить за мной перед камерой.</p>
+        <a class="btn-primary srv-cta" href="#" data-contact="whatsapp" data-i18n="srv.cta">Обсудить проект</a>
+        <h4 class="srv-inc" data-i18n="srv.2inc">Всё из «Потока роликов», плюс:</h4>
         <ul>
-          <li data-i18n="srv.2li1">Всё из «Потока роликов»</li>
           <li data-i18n="srv.2li2">Менеджмент команды: SMM, дизайнер, воронколог</li>
           <li data-i18n="srv.2li3">Упаковка профиля: позиционирование, описание, CTA</li>
           <li data-i18n="srv.2li4">Регулярные сторис и прогревы</li>
@@ -227,15 +236,20 @@
           <li data-i18n="srv.2li10">Аналитика и отчётность</li>
         </ul>
       </div>
-    </div>
-    <div class="srv-mini reveal">
-      <h3 class="display" data-i18n="srv.3h">Разовые задачи</h3>
-      <p><span data-i18n="srv.3t">Точечно под задачу: съёмка мероприятий, подкастов, личные консультации. Обсуждаем индивидуально.</span></p>
-      <div class="srv-mini-chips">
-        <span data-i18n="srv.3li1">мероприятия</span>
-        <span data-i18n="srv.3li2">подкасты</span>
-        <span data-i18n="srv.3li3">личные консультации</span>
+
+      <div class="srv-card reveal">
+        <h3 class="display" data-i18n="srv.3h">Разовые задачи</h3>
+        <p data-i18n="srv.3t">Точечно под задачу, без долгого сопровождения. Обсуждаем индивидуально.</p>
+        <a class="btn-ghost srv-cta" href="#" data-contact="whatsapp" data-i18n="srv.cta">Обсудить проект</a>
+        <h4 class="srv-inc" data-i18n="srv.3inc">Что беру:</h4>
+        <ul>
+          <li data-i18n="srv.3li1">Съёмка мероприятий</li>
+          <li data-i18n="srv.3li2">Подкасты</li>
+          <li data-i18n="srv.3li3">Личные консультации</li>
+          <li data-i18n="srv.3li4">Монтаж ваших материалов</li>
+        </ul>
       </div>
+
     </div>
   </div>
 </section>
@@ -288,6 +302,7 @@
 </section>
 
 <section class="section contact" id="contact">
+  <canvas class="waves" id="waves" aria-hidden="true"></canvas>
   <div class="wrap">
     <h2 class="display reveal" data-i18n="contact.title">Расскажите <em>о вашем проекте</em></h2>
     <p class="reveal" data-i18n="contact.sub">Пишите куда угодно, отвечаю сам в течение пары часов. Разберём задачу и найдём рабочий формат под неё.</p>
