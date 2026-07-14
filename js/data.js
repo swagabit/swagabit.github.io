@@ -17,7 +17,9 @@ export const CONTACTS = {
     en: "Hi! Coming from your website. I'd like the free profile review, here's my profile: ",
   },
   telegram: "https://t.me/taranov4",
-  instagram: "https://instagram.com/swagaeb",
+  // instagram убран с сайта по просьбе Кирилла.
+  // Вернуть: раскомментировать строку ниже и добавить ссылку с data-contact="instagram".
+  // instagram: "https://instagram.com/swagaeb",
 };
 
 export const SHOWREEL = {
