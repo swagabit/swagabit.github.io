@@ -188,6 +188,16 @@ function initWaves() {
   if (!cv) return;
   const ctx = cv.getContext("2d");
   let w = 0, h = 0, raf = null, t = 0, visible = false;
+  // курсор отталкивает линии: держим его позицию далеко, пока мышь не зашла
+  let mx = -9999, my = -9999;
+  const host = cv.closest("section") || cv.parentElement;
+  if (finePointer) {
+    host.addEventListener("pointermove", (e) => {
+      const r = cv.getBoundingClientRect();
+      mx = e.clientX - r.left; my = e.clientY - r.top;
+    });
+    host.addEventListener("pointerleave", () => { mx = -9999; my = -9999; });
+  }
 
   const resize = () => {
     const r = cv.getBoundingClientRect();
@@ -209,9 +219,17 @@ function initWaves() {
       ctx.beginPath();
       for (let y = 0; y <= h; y += 8) {
         const k = y / h;
-        const x = baseX
+        let x = baseX
           + Math.sin(k * 3.2 + phase + t) * 20
           + Math.sin(k * 6.1 - phase * 0.6 + t * 0.7) * 11;
+        // рядом с курсором линию отводит в сторону, сила падает к краю радиуса
+        const dx = x - mx, dy = y - my;
+        const d2 = dx * dx + dy * dy;
+        if (d2 < 32400) { // радиус 180px
+          const d = Math.sqrt(d2) || 1;
+          const f = 1 - d / 180;
+          x += (dx / d) * f * f * 46;
+        }
         y === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
       }
       // лёгкий оранжево-синий отлив по ширине, как во всей палитре

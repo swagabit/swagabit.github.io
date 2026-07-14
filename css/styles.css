@@ -102,14 +102,14 @@ nav {
 .dots {
   position: absolute; inset: 0; z-index: 0;
   pointer-events: none;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.16) 1px, transparent 1.2px);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.24) 1px, transparent 1.2px);
   background-size: 24px 24px;
   -webkit-mask-image: radial-gradient(ellipse 55% 60% at 50% 45%, #000 5%, transparent 72%);
   mask-image: radial-gradient(ellipse 55% 60% at 50% 45%, #000 5%, transparent 72%);
 }
 /* мягкий вариант для карточек: мельче шаг, слабее, свет из левого верха */
 .dots-soft {
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.13) 1px, transparent 1.2px);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1.2px);
   background-size: 18px 18px;
   -webkit-mask-image: radial-gradient(ellipse 70% 90% at 8% 0%, #000 0%, transparent 68%);
   mask-image: radial-gradient(ellipse 70% 90% at 8% 0%, #000 0%, transparent 68%);
@@ -162,8 +162,15 @@ nav {
 .hero-spot {
   position: absolute; inset: 0; z-index: 0; pointer-events: none;
   opacity: 0; transition: opacity 0.45s ease;
-  background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 40%),
-              rgba(232, 68, 46, 0.13), rgba(61, 90, 241, 0.06) 45%, transparent 65%);
+  /* яркое пятно за курсором... */
+  background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 40%),
+              rgba(232, 68, 46, 0.95), rgba(61, 90, 241, 0.55) 45%, transparent 66%);
+  /* ...но видно его ТОЛЬКО внутри точек: маска той же сеткой 24px, что и .dots,
+     поэтому точки под курсором словно загораются. */
+  -webkit-mask-image: radial-gradient(circle, #000 1px, transparent 1.2px);
+  -webkit-mask-size: 24px 24px;
+  mask-image: radial-gradient(circle, #000 1px, transparent 1.2px);
+  mask-size: 24px 24px;
 }
 @media (hover: hover) and (pointer: fine) {
   .hero:hover .hero-spot { opacity: 1; }
@@ -787,7 +794,7 @@ nav {
 }
 .contact h2 {
   font-size: clamp(29px, 4.4vw, 58px);
-  font-weight: 600; line-height: 1.1; max-width: 18ch;
+  font-weight: 600; line-height: 1.1; max-width: 24ch;
   margin-bottom: 20px;
 }
 .contact h2 em { font-style: normal; color: var(--accent); }
