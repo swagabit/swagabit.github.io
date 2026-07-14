@@ -14,7 +14,7 @@ export const CONTACTS = {
   // отдельный текст для кнопки «бесплатный разбор профиля»
   whatsappAuditText: {
     ru: "Привет! Пишу с сайта, хочу бесплатный разбор профиля. Вот ссылка: ",
-    en: "Hi! Found you through the website, I'd like the free profile review. Here's the link: ",
+    en: "Hi! Coming from your website. I'd like the free profile review, here's my profile: ",
   },
   telegram: "https://t.me/taranov4",
   instagram: "https://instagram.com/swagaeb",
@@ -38,11 +38,11 @@ export const WORKS = [
     },
     task: {
       ru: "Клинике нужны были охваты, узнаваемость в Дубае и новые заявки.",
-      en: "The clinic needed reach, recognition in Dubai and new inquiries.",
+      en: "The clinic wanted reach, recognition around Dubai and new leads.",
     },
     did: {
       ru: "Проанализировали нишу и поняли, что стандартный обзор процедур не работает. Сняли пять разных форматов и зашли через острые темы и разборы внешности известных людей.",
-      en: "We analyzed the niche and realized a standard rundown of procedures doesn't work. We shot five different formats and came in through edgy topics and breakdowns of well-known people's looks.",
+      en: "We looked at the niche and realized a standard rundown of procedures was never going to land. We shot five different formats and went in through edgy topics and breakdowns of famous people's faces.",
     },
     result: {
       ru: "Ролик с разбором набрал 4 миллиона просмотров. Только с этого видео пришло 5 000 новых подписчиков.",
@@ -64,15 +64,15 @@ export const WORKS = [
     },
     task: {
       ru: "Нестабильный поток пациентов. Нужен был контент, который будет стабильно привлекать людей.",
-      en: "An unstable flow of patients. They needed content that would steadily attract people.",
+      en: "Patient flow was unpredictable. They needed content that brings people in consistently.",
     },
     did: {
       ru: "Сделали ставку на экспертный формат, бьющий точно в боли пациентов. Полностью забрали на себя производство: от идей до финального монтажа и выпуска.",
-      en: "We bet on an expert format aimed straight at patients' pain points. We took over production end to end: from ideas to final edit and release.",
+      en: "We went with an expert format aimed straight at what patients actually worry about, and took production off their hands end to end, from ideas to the final edit and posting.",
     },
     result: {
       ru: "Аудитория клиники выросла в три раза (с 3 до 11+ тысяч). Instagram стал стабильным источником лидов на процедуры.",
-      en: "The clinic's audience tripled (from 3,000 to 11,000+). Instagram became a steady source of leads for procedures.",
+      en: "The clinic tripled its audience, from 3,000 to over 11,000. Instagram turned into a steady source of bookings.",
     },
     videos: [
       { src: "media/videos/med1.mp4", poster: null },
@@ -90,15 +90,15 @@ export const WORKS = [
     },
     task: {
       ru: "Эксперт уже снимал видео сам, но упирался в потолок просмотров в своей узкой нише.",
-      en: "The expert already shot videos himself but kept hitting a view ceiling in his narrow niche.",
+      en: "He was already shooting videos himself, but kept hitting a ceiling on views in a narrow niche.",
     },
     did: {
       ru: "Договорились на пять тестовых роликов. Докрутили подачу, добавили живого процесса (гаражи, осмотры, сделки) и внедрили агрессивный динамичный монтаж, чтобы держать внимание.",
-      en: "We agreed on five test reels. We sharpened the delivery, added live process (garages, inspections, deals) and brought in aggressive, fast-paced editing to hold attention.",
+      en: "We agreed on five test reels. I sharpened his delivery, put the real work on camera (garages, inspections, deals) and brought in aggressive, fast-paced editing to hold attention.",
     },
     result: {
       ru: "Ролики в сумме набрали 800 000 просмотров. Эксперт забрал формат в постоянную работу.",
-      en: "The reels racked up 800,000 views in total. The expert took the format into ongoing work.",
+      en: "The reels pulled 800,000 views between them. He kept the format for ongoing work.",
     },
     videos: [
       { src: "media/videos/work4-1.mp4", poster: null },
@@ -116,15 +116,15 @@ export const WORKS = [
     },
     task: {
       ru: "Аудитория висела на 10 тысячах. Автор снимала хаотичные разговорные видео, роста не было.",
-      en: "The audience was stuck at 10,000. The author shot chaotic talking-head videos with no growth.",
+      en: "Her audience had been stuck at 10,000. She was posting chaotic talking-head videos and nothing moved.",
     },
     did: {
       ru: "Разобрал её контент и показал, в чём главная фишка. Посоветовал сделать акцент на органичном образе: русская девушка рассказывает треш-истории со свиданий на английском, с сигаретой в руке и отборным матом. Эту искренность она обернула в формат yapping и начала брать объёмом, без сложного монтажа.",
-      en: "I broke down her content and pointed out the core hook. I suggested leaning into her organic character: a Russian girl telling trashy dating stories in English, cigarette in hand and plenty of swearing. She wrapped that honesty into a yapping format and started going for volume, without heavy editing.",
+      en: "I went through her content and showed her where the real hook was. I told her to lean into who she already is on camera: a Russian girl telling trashy dating stories in English, cigarette in hand, swearing like a sailor. She wrapped that honesty into a yapping format and went for volume instead of heavy editing.",
     },
     result: {
       ru: "Образ идеально зацепил аудиторию, ролики пробили алгоритмы. Блог вырос на 100 000 подписчиков без копейки вложений в трафик.",
-      en: "The character clicked with the audience and the reels broke through the algorithm. The blog grew by 100,000 followers without a cent spent on traffic.",
+      en: "The persona clicked instantly and the reels broke through the algorithm. The account grew by 100,000 followers without a cent spent on ads.",
     },
     videos: [
       { src: "media/videos/lb1.mp4", poster: null },
