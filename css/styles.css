@@ -96,6 +96,29 @@ nav {
 }
 .nav-cta:hover { background: #fff; transform: translateY(-1px); }
 
+/* ---------- ТОЧЕЧНАЯ СЕТКА (gradient dots) ----------
+   Сетка точек, затухающая к краям через mask. Даёт «дорогой» фон,
+   не перебивая видео. Кладётся отдельным слоем <div class="dots">. */
+.dots {
+  position: absolute; inset: 0; z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.16) 1px, transparent 1.2px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(ellipse 55% 60% at 50% 45%, #000 5%, transparent 72%);
+  mask-image: radial-gradient(ellipse 55% 60% at 50% 45%, #000 5%, transparent 72%);
+}
+/* мягкий вариант для карточек: мельче шаг, слабее, свет из левого верха */
+.dots-soft {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.13) 1px, transparent 1.2px);
+  background-size: 18px 18px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 90% at 8% 0%, #000 0%, transparent 68%);
+  mask-image: radial-gradient(ellipse 70% 90% at 8% 0%, #000 0%, transparent 68%);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .dots { animation: dotsIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+}
+@keyframes dotsIn { from { opacity: 0; transform: scale(1.06); } to { opacity: 1; transform: none; } }
+
 /* ---------- HERO ---------- */
 .hero {
   min-height: 100dvh;
@@ -114,6 +137,7 @@ nav {
 .hero-grid {
   display: grid; grid-template-columns: 1.15fr 0.85fr;
   gap: clamp(32px, 5vw, 72px); align-items: center; width: 100%;
+  position: relative; z-index: 1;
 }
 .hero-copy h1 {
   font-family: "Unbounded", sans-serif;
@@ -629,7 +653,9 @@ nav {
 .offer::before {
   background: radial-gradient(ellipse 55% 70% at 15% 20%, rgba(232, 68, 46, 0.10), transparent 65%);
 }
+.offer-copy, .offer-list { position: relative; z-index: 1; }
 .offer-card {
+  position: relative; overflow: hidden;
   display: grid; grid-template-columns: 1.25fr 0.75fr;
   gap: clamp(28px, 4vw, 64px); align-items: center;
   background:
