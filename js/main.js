@@ -102,6 +102,82 @@ function renderReels() {
     grid.appendChild(cell);
     revealIO.observe(cell);
   });
+  initTilt();
+}
+
+// ---------- эффекты ----------
+const noMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+// Цифры в полосе доказательств набегают от нуля при появлении.
+// Разбираем строку на префикс + число + суффикс, чтобы работало и с
+// «100+ млн», и с «$200 000+», и с английскими «150K+».
+function animateCount(el) {
+  const text = el.dataset.countText || el.textContent;
+  el.dataset.countText = text;
+  const m = text.match(/\d[\d\s  ,]*/);
+  if (!m) return;
+  const target = parseInt(m[0].replace(/\D/g, ""), 10);
+  if (!isFinite(target) || target === 0) return;
+  const prefix = text.slice(0, m.index);
+  const suffix = text.slice(m.index + m[0].length);
+  const grouped = /[\s  ,]/.test(m[0]);
+  const fmt = (n) => prefix + (grouped ? String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " ") : String(n)) + suffix;
+  const dur = 1200;
+  const t0 = performance.now();
+  const step = (now) => {
+    const p = Math.min(1, (now - t0) / dur);
+    el.textContent = fmt(Math.round(target * (1 - Math.pow(1 - p, 3))));
+    if (p < 1) requestAnimationFrame(step);
+    else el.textContent = text;
+  };
+  requestAnimationFrame(step);
+}
+
+let countIO = null;
+function initCounters() {
+  if (noMotion) return;
+  if (!countIO) {
+    countIO = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { animateCount(e.target); countIO.unobserve(e.target); }
+      });
+    }, { threshold: 0.6 });
+  }
+  document.querySelectorAll(".proof-item b").forEach((el) => {
+    delete el.dataset.countText; // после смены языка считаем новое значение
+    countIO.observe(el);
+  });
+}
+
+// Свет за курсором в первом экране
+function initSpotlight() {
+  const heroEl = document.querySelector(".hero");
+  const spot = document.querySelector(".hero-spot");
+  if (!heroEl || !spot || !finePointer || noMotion) return;
+  heroEl.addEventListener("pointermove", (e) => {
+    const r = heroEl.getBoundingClientRect();
+    spot.style.setProperty("--mx", `${e.clientX - r.left}px`);
+    spot.style.setProperty("--my", `${e.clientY - r.top}px`);
+  });
+}
+
+// Лёгкий 3D-наклон плиток витрины за курсором (только мышь)
+function initTilt() {
+  if (!finePointer || noMotion) return;
+  document.querySelectorAll("#showcase-grid .showcase-cell").forEach((cell) => {
+    if (cell.dataset.tilt) return;
+    const reel = cell.querySelector(".reel");
+    if (!reel) return;
+    cell.dataset.tilt = "1";
+    cell.addEventListener("pointermove", (e) => {
+      const r = cell.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      reel.style.transform = `perspective(700px) rotateY(${px * 7}deg) rotateX(${-py * 7}deg) translateY(-6px)`;
+    });
+    cell.addEventListener("pointerleave", () => { reel.style.transform = ""; });
+  });
 }
 
 // ---------- язык ----------
@@ -110,6 +186,7 @@ function setLang(next) {
   applyLang(lang);
   renderReels();
   wireContacts();
+  initCounters();
 }
 document.querySelectorAll("[data-lang-btn]").forEach((btn) => {
   btn.addEventListener("click", () => setLang(btn.getAttribute("data-lang-btn")));
@@ -166,4 +243,6 @@ if (document.documentElement.getAttribute("data-lang-pending") === "en") {
   applyLang(lang);
   renderReels();
   wireContacts();
+  initCounters();
 }
+initSpotlight();

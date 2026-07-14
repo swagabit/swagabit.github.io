@@ -119,6 +119,40 @@ nav {
 }
 @keyframes dotsIn { from { opacity: 0; transform: scale(1.06); } to { opacity: 1; transform: none; } }
 
+/* ---------- СВЕТ ЗА КУРСОРОМ (первый экран) ----------
+   Пятно тянется за мышкой. Только для мыши: на тач-экранах не включаем. */
+.hero-spot {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  opacity: 0; transition: opacity 0.45s ease;
+  background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 40%),
+              rgba(232, 68, 46, 0.13), rgba(61, 90, 241, 0.06) 45%, transparent 65%);
+}
+@media (hover: hover) and (pointer: fine) {
+  .hero:hover .hero-spot { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .hero-spot { display: none; } }
+
+/* ---------- ЖИВАЯ ГРАДИЕНТНАЯ РАМКА ----------
+   Кольцо по контуру карточки: конический градиент крутится по кругу.
+   Рисуется через mask, чтобы осталась только рамка, без заливки. */
+@property --ang { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+.offer-card::after, .srv-featured::after {
+  content: "";
+  position: absolute; inset: 0; z-index: 2;
+  border-radius: inherit; padding: 1.5px;
+  pointer-events: none;
+  background: conic-gradient(from var(--ang), transparent 18%, var(--accent) 42%, var(--accent2) 58%, transparent 82%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: angSpin 6s linear infinite;
+}
+@keyframes angSpin { to { --ang: 360deg; } }
+@media (prefers-reduced-motion: reduce) {
+  .offer-card::after, .srv-featured::after { animation: none; }
+}
+
 /* ---------- HERO ---------- */
 .hero {
   min-height: 100dvh;
@@ -401,6 +435,8 @@ nav {
 }
 .showcase-cell:nth-child(even) { transform: translateY(26px); }
 .showcase-cell .reel { transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s; }
+/* наклон за курсором: отклик быстрее, чтобы не «плыло» */
+.showcase-cell[data-tilt] .reel { transition: transform 0.18s ease-out, border-color 0.3s; }
 .showcase-cell .reel:hover { transform: translateY(-6px); border-color: rgba(255, 255, 255, 0.22); }
 
 /* ---------- REVIEWS ---------- */
